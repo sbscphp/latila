@@ -14,15 +14,15 @@ const Header = () => {
           <div className="flex items-center">
             <div className="flex items-center space-x-3">
               {/* Logo Icon */}
-              <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-white">
+              <div className=" rounded-lg flex items-center justify-center bg-white"
+              style={{ width: "143px", height: "54px"}}>
                 <img
-                  src="/assets/images/rectangles.png"
+                  src="/assets/images/content.png"
                   alt="Latila Consulting Logo"
-                  className="w-8 h-8 object-contain"
                 />
               </div>
               {/* Logo Text */}
-              <div className="flex flex-col">
+              {/* <div className="flex flex-col">
                 <span
                   className="text-xl font-bold"
                   style={{ color: "#00447D" }}
@@ -32,7 +32,7 @@ const Header = () => {
                 <span className="text-sm" style={{ color: "#00447D" }}>
                   CONSULTING
                 </span>
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -89,13 +89,16 @@ const Header = () => {
           <div className="hidden md:flex items-center space-x-4">
             <Link
               href="/contact"
-              className="text-white px-6 py-2 rounded-lg transition-colors flex items-center space-x-2"
+              className="text-white px-6 py-2 rounded-full transition-colors flex items-center space-x-2"
               style={{ backgroundColor: "#00447D" }}
               onMouseEnter={(e) => (e.target.style.backgroundColor = "#003366")}
               onMouseLeave={(e) => (e.target.style.backgroundColor = "#00447D")}
             >
               <span>Contact Us</span>
-              <svg
+              <img src="/assets/images/arrow.png" alt=""
+              style={{ width: "16px", height: "16px" }}
+              />
+              {/* <svg
                 className="w-4 h-4"
                 fill="none"
                 stroke="currentColor"
@@ -107,7 +110,7 @@ const Header = () => {
                   strokeWidth={2}
                   d="M9 5l7 7-7 7"
                 />
-              </svg>
+              </svg> */}
             </Link>
           </div>
 
@@ -188,7 +191,7 @@ const Header = () => {
               <Link
                 href="/contact"
                 className="text-white px-6 py-2 rounded-lg transition-colors flex items-center space-x-2 w-fit"
-                style={{ backgroundColor: "#00447D" }}
+                style={{ backgroundColor: "#00447D"}}
                 onMouseEnter={(e) =>
                   (e.target.style.backgroundColor = "#003366")
                 }
@@ -197,7 +200,7 @@ const Header = () => {
                 }
               >
                 <span>Contact Us</span>
-                <svg
+                {/* <svg
                   className="w-4 h-4"
                   fill="none"
                   stroke="currentColor"
@@ -209,7 +212,7 @@ const Header = () => {
                     strokeWidth={2}
                     d="M9 5l7 7-7 7"
                   />
-                </svg>
+                </svg> */}
               </Link>
             </nav>
           </div>

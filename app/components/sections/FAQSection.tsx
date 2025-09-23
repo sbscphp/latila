@@ -24,26 +24,32 @@ const FAQSection = () => {
   ];
 
   return (
-    <section className="bg-white py-16 lg:py-24">
+    <section className=" py-16 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="mb-12 flex items-center justify-between">
+          <h2
+            className="text-lg font-bold uppercase tracking-wider"
+            style={{ color: "#00447D" }}
+          >
+            FREQUENTLY ASKED QUESTIONS
+          </h2>
+         <div className="flex space-x-0.5">
+            <div className="w-6 h-2 rounded-lg" style={{ backgroundColor: "#00447D"}}></div>
+            <div className="w-2 h-2 rounded-lg" style={{ backgroundColor: "#4EB2FF"}}></div>
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Left Content */}
-          <div className="space-y-8">
-            <h2
-              className="text-sm font-semibold uppercase tracking-wider mb-4"
-              style={{ color: "#00447D" }}
-            >
-              FREQUENTLY ASKED QUESTIONS
-            </h2>
-
+          <div>
             <div className="space-y-6">
-              <h3 className="text-3xl md:text-4xl font-bold text-gray-900">
-                You have questions, we have answers.
+              <h3 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+                You have questions,<br />we have answers
               </h3>
 
-              <p className="text-lg text-gray-600 leading-relaxed">
-                Latila Consulting is here to answer your questions about us and
-                our services. Contact us for further questions you wish to ask.
+              <p className="text-gray-600 leading-relaxed">
+                Latila Consulting is here to answer your questions about us and our services. Contact us for further questions you wish to ask.
               </p>
             </div>
           </div>
@@ -51,7 +57,12 @@ const FAQSection = () => {
           {/* Right Content - FAQ Accordion */}
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <div key={faq.question} className="bg-gray-50 rounded-2xl">
+              <div 
+                key={faq.question} 
+                className={`rounded-2xl transition-all ${
+                  openIndex === index ? 'bg-white shadow-sm' : 'bg-gray-100'
+                }`}
+              >
                 <button
                   className="w-full px-6 py-6 text-left flex justify-between items-center focus:outline-none"
                   onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
@@ -60,11 +71,11 @@ const FAQSection = () => {
                     {faq.question}
                   </span>
                   <div className="flex-shrink-0">
-                    {openIndex === index ? (
-                      <div
-                        className="w-8 h-8 rounded-full flex items-center justify-center"
-                        style={{ backgroundColor: "#00447D" }}
-                      >
+                    <div
+                      className="w-8 h-8 rounded-full flex items-center justify-center transition-colors"
+                      style={{ backgroundColor: openIndex === index ? "#00BFFF" : "#00447D" }}
+                    >
+                      {openIndex === index ? (
                         <svg
                           className="w-4 h-4 text-white"
                           fill="none"
@@ -78,12 +89,7 @@ const FAQSection = () => {
                             d="M20 12H4"
                           />
                         </svg>
-                      </div>
-                    ) : (
-                      <div
-                        className="w-8 h-8 rounded-full flex items-center justify-center"
-                        style={{ backgroundColor: "#00447D" }}
-                      >
+                      ) : (
                         <svg
                           className="w-4 h-4 text-white"
                           fill="none"
@@ -97,8 +103,8 @@ const FAQSection = () => {
                             d="M12 6v6m0 0v6m0-6h6m-6 0H6"
                           />
                         </svg>
-                      </div>
-                    )}
+                      )}
+                    </div>
                   </div>
                 </button>
 

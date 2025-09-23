@@ -1,108 +1,167 @@
 "use client";
 
-const MeetTeamSection = () => {
+import Link from "next/link";
+
+const MeetTheTeamSection = () => {
   const teamMembers = [
     {
       name: "Sandra Yu",
-      title: "Senior Cloud Engineer",
-      image: "/assets/images/Frame 7 (5).png",
+      role: "Senior Cloud Engineer",
+      image: "/assets/images/team2.png",
     },
     {
-      name: "Kingsley Freshman",
-      title: "Dev Ops Engineer",
-      image: "/assets/images/Frame 7 (6).png",
+      name: "Kingsley Alao", 
+      role: "Dev Ops Engineer",
+      image: "/assets/images/team1.png",
     },
     {
       name: "Tunde Ednut",
-      title: "Senior Java Developer",
-      image: "/assets/images/Frame 7 (7).png",
+      role: "Senior Java Developer", 
+      image: "/assets/images/services3.png",
     },
     {
       name: "Oladimeji Alao",
-      title: "CEO, Latila Consulting",
-      image: "/assets/images/Frame 7 (8).png",
+      role: "CEO, Latila Consulting",
+      image: "/assets/images/services4.png",
     },
     {
       name: "Oladimeji Alao",
-      title: "CEO, Latila Consulting",
-      image: "/assets/images/Frame 7 (9).png",
+      role: "CEO, Latila Consulting",
+      image: "/assets/images/services5.png",
     },
-  ];
-
-  const skillTags = [
-    { name: "Project Managers", color: "#10B981" },
-    { name: "Dev Ops", color: "#8B5CF6" },
-    { name: "Front-End Developers", color: "#3B82F6" },
-    { name: "Back-End Developers", color: "#7C3AED" },
   ];
 
   return (
-    <section className="bg-white py-16 lg:py-24">
+    <section className="bg-gray-50 py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="mb-16">
+        {/* Header */}
+        <div className="mb-12 flex items-center justify-between">
           <h2
-            className="text-sm font-semibold uppercase tracking-wider mb-4"
+            className="text-lg font-bold uppercase tracking-wider"
             style={{ color: "#00447D" }}
           >
             MEET THE TEAM
           </h2>
+           <div className="flex space-x-0.5">
+            <div className="w-6 h-2 rounded-lg" style={{ backgroundColor: "#00447D"}}></div>
+            <div className="w-2 h-2 rounded-lg" style={{ backgroundColor: "#4EB2FF"}}></div>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Content */}
-          <div className="space-y-8">
-            <div className="space-y-6">
-              <h3 className="text-3xl md:text-4xl font-bold text-gray-900">
-                What we offer
-              </h3>
+          <div className="lg:col-span-4 space-y-6">
+            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+              What we offer
+            </h3>
 
-              <p className="text-lg text-gray-600 leading-relaxed">
-                Latila Consulting excels in delivering top-notch IT solutions,
-                leveraging deep expertise to drive innovation and efficiency for
-                businesses.
-              </p>
+            <p className="text-gray-600 leading-relaxed">
+              Latila Consulting excels in delivering top-notch IT solutions,
+              leveraging deep expertise to drive innovation and efficiency for
+              businesses.
+            </p>
 
-              {/* Skill Tags */}
-              <div className="flex flex-wrap gap-4">
-                {skillTags.map((skill, index) => (
-                  <span
-                    key={index}
-                    className="px-4 py-2 rounded-lg text-white text-sm font-medium"
-                    style={{ backgroundColor: skill.color }}
-                  >
-                    {skill.name}
-                  </span>
-                ))}
+            {/* Role Tags */}
+            <div className="space-y-3">
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">
+                  Project Managers
+                </span>
+                <span className="px-3 py-1 text-xs font-medium rounded-full bg-pink-100 text-pink-800">
+                  Dev Ops
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 text-xs font-medium rounded-full bg-cyan-100 text-cyan-800">
+                  Front-End Developers
+                </span>
+                <span className="px-3 py-1 text-xs font-medium rounded-full bg-purple-100 text-purple-800">
+                  Back-End Developers
+                </span>
+              </div>
+            </div>
+
+            {/* Third Team Member Card - Under Content */}
+            <div className="mt-8">
+              <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <div className="h-40">
+                  <img
+                    src={teamMembers[2].image}
+                    alt={teamMembers[2].name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-4">
+                  <h4 className="text-sm font-bold text-gray-900 mb-1">
+                    {teamMembers[2].name}
+                  </h4>
+                  <p className="text-xs text-gray-600">
+                    {teamMembers[2].role}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Right Content - Team Grid */}
-          <div className="grid grid-cols-2 gap-6">
-            {teamMembers.map((member, index) => (
-              <div
-                key={index}
-                className="bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow"
-              >
-                {/* Member Image */}
-                <div className="aspect-square">
-                  <img
-                    src={member.image}
-                    alt={`${member.name} - ${member.title}`}
-                    className="w-full h-full object-cover"
-                  />
+          <div className="lg:col-span-8">
+            {/* First Row - 2 team member cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              {teamMembers.slice(0, 2).map((member, index) => (
+                <div
+                  key={member.name + index}
+                  className={`bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow relative 
+                  
+                  `}
+                >
+                  {member && (
+                    <div className="absolute top-2 right-2 text-white text-xs px-2 py-1 rounded">
+                    </div>
+                  )}
+                  <div className="h-48">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <h4 className="text-lg font-bold text-gray-900 mb-1">
+                      {member.name}
+                    </h4>
+                    <p className="text-sm text-gray-600">
+                      {member.role}
+                    </p>
+                  </div>
                 </div>
+              ))}
+            </div>
 
-                {/* Member Info */}
-                <div className="p-4">
-                  <h4 className="font-bold text-gray-900 mb-1">
-                    {member.name}
-                  </h4>
-                  <p className="text-sm text-gray-600">{member.title}</p>
+            {/* Second Row - 2 team member cards (4th and 5th members) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {teamMembers.slice(3, 5).map((member, index) => (
+                <div
+                  key={member.name + index}
+                  className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <div className="h-40">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <h4 className="text-sm font-bold text-gray-900 mb-1">
+                      {member.name}
+                    </h4>
+                    <p className="text-xs text-gray-600">
+                      {member.role}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -110,4 +169,4 @@ const MeetTeamSection = () => {
   );
 };
 
-export default MeetTeamSection;
+export default MeetTheTeamSection;

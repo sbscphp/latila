@@ -11,16 +11,18 @@ const HeroSection = () => {
           <div className="mb-6">
             <span
               className="inline-block px-4 py-2 rounded-full text-sm font-medium"
-              style={{ backgroundColor: "#e6f2ff", color: "#00447D" }}
+              style={{ backgroundColor: "#e6f2ff", color: "#344054" }}
             >
-              LATILA
+              <span className="inline-block px-4 py-2 rounded-full text-sm font-medium mr-2"
+              style={{ backgroundColor: "#00447D", color: "#FFFFFF" }}>LATILA</span>
+              Cloud mitigation and project management expert company
             </span>
           </div>
 
           {/* Main Headline */}
           <h1
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
-            style={{ color: "#00447D" }}
+            style={{ color: "#1D2939" }}
           >
             Empowering growth through secure, smart and scalable technology
           </h1>
@@ -37,25 +39,15 @@ const HeroSection = () => {
           <div className="mb-16">
             <Link
               href="/contact"
-              className="inline-flex items-center text-white px-8 py-4 rounded-lg text-lg font-medium transition-colors"
+              className="inline-flex items-center text-white px-8 py-4 rounded-full  text-lg font-medium transition-colors"
               style={{ backgroundColor: "#00447D" }}
               onMouseEnter={(e) => (e.target.style.backgroundColor = "#003366")}
               onMouseLeave={(e) => (e.target.style.backgroundColor = "#00447D")}
             >
               <span>Book a consultation</span>
-              <svg
-                className="w-5 h-5 ml-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
+             <img src="/assets/images/arrow.png" alt=""
+              style={{ width: "16px", height: "16px", marginLeft: "8px"}}
+              />
             </Link>
           </div>
 
@@ -63,7 +55,7 @@ const HeroSection = () => {
           <div className="relative">
             <div className="rounded-2xl overflow-hidden shadow-lg">
               <img
-                src="/assets/images/Photos.png"
+                src="/assets/images/consultation.png"
                 alt="Professional team collaboration at Latila Consulting"
                 className="w-full h-auto object-cover"
               />
