@@ -4,7 +4,7 @@ import Footer from "../components/layout/Footer";
 import AboutHeroSection from "../components/sections/AboutHeroSection";
 import MissionVisionSection from "../components/sections/MissionVisionSection";
 import DigitalTransformationSection from "../components/sections/DigitalTransformationSection";
-import MeetTeamSection from "../components/sections/MeetTeamSection";
+// import MeetTeamSection from "../components/sections/MeetTeamSection";
 import ContactSection from "../components/sections/ContactSection";
 
 const page = () => {
@@ -15,7 +15,7 @@ const page = () => {
         <AboutHeroSection />
         <MissionVisionSection />
         <DigitalTransformationSection />
-        <MeetTeamSection />
+        {/* <MeetTeamSection /> */}
         <ContactSection />
       </main>
       <Footer />

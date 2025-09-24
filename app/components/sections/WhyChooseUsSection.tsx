@@ -1,133 +1,129 @@
 "use client";
 
 const WhyChooseUsSection = () => {
-  const features = [
+  const leftFeatures = [
+    {
+      img: "/assets/images/FRAME7.png",
+      title: "Expertise Across Regions",
+      description:
+        "Experience delivering successful transformations in North America, Africa, and beyond",
+    },
+    {
+      img: "/assets/images/FRAME7.png",
+      title: "Security at the Core",
+      description:
+        "Every solution is designed to meet strict compliance and regulatory standards.",
+    },
     {
       img: "/assets/images/FRAME7.png",
       title: "Holistic Approach",
       description:
         "From strategy and governance to execution and post-migration support.",
     },
+  ];
+
+  const rightFeatures = [
     {
-      img: "/assets/images/FRAME3.png", 
-      title: "Security at the Core",
-      description:
-        "Every solution is designed to meet strict compliance and regulatory standards.",
-    },
-    {
-      img: "/assets/images/FRAME7.png", 
-      title: "Client-Centric Partnership",
-      description:
-        "We align technology with your business objectives, not the other way around.",
-    },
-    {
-      img: "/assets/images/FRAME2.png",
-      title: "Expertise Across Regions",
-      description:
-        "Experience delivering successful transformations in North America, Africa, and beyond",
-    },
-    {
-      img: "/assets/images/FRAME4.png", 
+      img: "/assets/images/FRAME7.png",
       title: "Adaptability",
       description:
         "Skilled in multiple delivery methodologies (Agile, Waterfall, Hybrid), tailored to client needs",
     },
+    {
+      img: "/assets/images/FRAME7.png",
+      title: "Client-Centric Partnership",
+      description:
+        "We align technology with your business objectives, not the other way around.",
+    },
   ];
 
   return (
-    <section className="bg-gray-50 py-16 lg:py-20">
+    <section className="bg-white py-12 md:py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="mb-16 flex items-center justify-between">
-          <h2
-            className="text-lg font-bold uppercase tracking-wider"
-            style={{ color: "#00447D" }}
-          >
-            WHY CHOOSE US
-          </h2>
-         <div className="flex space-x-0.5">
-            <div className="w-6 h-2 rounded-lg" style={{ backgroundColor: "#00447D"}}></div>
-            <div className="w-2 h-2 rounded-lg" style={{ backgroundColor: "#4EB2FF"}}></div>
+        {/* Custom column ratios */}
+        <div className="grid grid-cols-1 lg:grid-cols-[35%_65%] gap-6 lg:gap-10 items-start">
+          {/* Left Column - Header Text */}
+          <div className="space-y-4 md:space-y-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+              Why Choose Us
+            </h2>
+            <p className="text-base md:text-lg text-gray-600 leading-relaxed">
+              Latila Consulting excels in delivering top-notch IT solutions,
+              leveraging deep expertise to drive innovation and efficiency for
+              businesses.
+            </p>
           </div>
-        </div>
 
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* First Row - 3 items */}
-          {features.slice(0, 3).map((feature, index) => (
-              <div
-                key={feature.title}
-                className="bg-white rounded-lg p-6 shadow-sm relative overflow-hidden"
-              >
-                {/* Blue Triangle */}
+          {/* Right Column */}
+          <div className="relative flex flex-col lg:flex-row">
+            {/* Left Features */}
+            <div className="flex-1 space-y-6 md:space-y-8 lg:pr-8">
+              {leftFeatures.map((feature) => (
                 <div
-                  className="absolute top-0 right-0 w-0 h-0"
-                  style={{ 
-                    borderLeft: "50px solid transparent",
-                    borderTop: "50px solid #00447D"
-                  }}
-                ></div>
-
-                <div className="mb-4">
-                  
-                    <img 
-                      src={feature.img} 
-                      alt={feature.title}
-                      className="w-12 h-12 object-contain"
-                    />
+                  key={feature.title}
+                  className="flex items-start space-x-4 bg-white rounded-2xl shadow-sm p-4 md:p-6"
+                >
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 flex items-center justify-center">
+                      <img
+                        src={feature.img}
+                        alt={feature.title}
+                        className="w-12 h-12 object-contain"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex-1 space-y-2">
+                    <h3 className="text-base md:text-lg font-semibold text-gray-900">
+                      {feature.title}
+                    </h3>
+                    <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
                 </div>
-
-                {/* Content */}
-                <div className="space-y-3 relative z-10">
-                  <h3 className="text-base font-bold text-gray-900">
-                    {feature.title}
-                  </h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    {feature.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        
-        {/* Second Row - 2 items centered */}
-        <div className="flex justify-center mt-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl">
-            {features.slice(3, 5).map((feature, index) => (
-            <div
-              key={feature.title}
-              className="bg-white rounded-lg p-6 shadow-sm relative overflow-hidden"
-            >
-              {/* Blue Triangle */}
-              <div
-                className="absolute top-0 right-0 w-0 h-0"
-                style={{ 
-                  borderLeft: "50px solid transparent",
-                  borderTop: "50px solid #00447D"
-                }}
-              ></div>
-
-           
-              <div className="mb-4">
-                  <img 
-                    src={feature.img} 
-                    alt={feature.title}
-                    className="w-12 h-12 object-contain"
-                  />
-              </div>
-
-              {/* Content */}
-              <div className="space-y-3 relative z-10">
-                <h3 className="text-base font-bold text-gray-900">
-                  {feature.title}
-                </h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
+              ))}
             </div>
-          ))}
+
+            {/* Divider */}
+            <div
+              className="hidden lg:block w-2 rounded-full mx-4"
+              style={{ backgroundColor: "#4EB2FF" }}
+            ></div>
+
+            {/* Horizontal divider on mobile */}
+            <div
+              className="lg:hidden my-6 h-1 w-full rounded-full"
+              style={{ backgroundColor: "#4EB2FF" }}
+            ></div>
+
+            {/* Right Features */}
+            <div className="flex-1 space-y-6 md:space-y-8 lg:pl-8">
+              {rightFeatures.map((feature) => (
+                <div
+                  key={feature.title}
+                  className="flex items-start space-x-4 bg-white rounded-2xl shadow-sm p-4 md:p-6"
+                >
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 flex items-center justify-center">
+                      <img
+                        src={feature.img}
+                        alt={feature.title}
+                        className="w-12 h-12 object-contain"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex-1 space-y-2">
+                    <h3 className="text-base md:text-lg font-semibold text-gray-900">
+                      {feature.title}
+                    </h3>
+                    <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

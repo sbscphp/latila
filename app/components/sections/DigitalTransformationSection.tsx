@@ -2,41 +2,49 @@
 
 const DigitalTransformationSection = () => {
   return (
-    <section className="bg-gray-50 py-16 lg:py-24">
+    <section className="bg-white py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Left Content */}
-          <div className="space-y-8">
-            {/* Section Title */}
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-              Empowering Digital Transformation
-            </h2>
+          <div className="space-y-6 lg:pr-8">
+            {/* Main Heading */}
+            <h1 className="text-2xl lg:text-3xl xl:text-4xl font-semibold leading-tight">
+              <span className="text-gray-900">Empowering growth</span>
+              <br />
+              <span className="text-gray-900">through </span>
+              <span className="text-cyan-400">secure</span>
+              <span className="text-gray-900">, </span>
+              <span className="text-cyan-400">smart</span>
+              <span className="text-gray-900"> and</span>
+              <br />
+              <span className="text-cyan-400">scalable</span>
+              <span className="text-gray-900"> technology</span>
+              <span className="text-cyan-400">.</span>
+            </h1>
 
-            {/* Description */}
-            <div className="space-y-6">
-              <p className="text-lg text-gray-600 leading-relaxed">
-                Founded in 2018, Latila Consulting began as a small team of
-                technology enthusiasts dedicated to helping businesses embrace
-                digital transformation. Over the years, we have expanded our
-                expertise to include cloud migration, IT ventures, and
-                comprehensive project management.
-              </p>
-
-              <p className="text-lg text-gray-600 leading-relaxed">
-                Today, we proudly serve clients across various industries,
-                delivering scalable and secure technology solutions tailored to
-                their unique needs.
+            {/* Description Text */}
+            <div className="space-y-4 pt-4">
+              <p className="text-gray-600 text-lg leading-relaxed">
+                We are an IT consulting and project management firm helping 
+                organizations build secure, scalable, and efficient technology 
+                foundations. We specialize in guiding clients through complex 
+                technology transformations — from cloud adoption and 
+                cybersecurity to project management and enterprise 
+                modernization. With experience serving financial institutions, 
+                global enterprises, and growing businesses across Africa and 
+                North America, we combine technical expertise with business 
+                insight to deliver lasting impact.
               </p>
             </div>
           </div>
 
           {/* Right Content - CEO Profile */}
           <div className="flex justify-center lg:justify-end">
-            <div className="bg-white rounded-2xl p-8 shadow-lg max-w-sm">
-              <div className="text-center">
+            <div className=" rounded-3xl p-8 max-w-md w-full">
+              <div className="text-center space-y-6">
                 {/* CEO Image */}
-                <div className="mb-6">
-                  <div className="w-72 h-72 mx-auto rounded-2xl overflow-hidden shadow-lg">
+                <div className="relative">
+                  <div className="w-80 h-80 rounded-2xl mx-auto overflow-hidden">
                     <img
                       src="/assets/images/oladimeji.png"
                       alt="Oladimeji Alao, CEO of Latila Consulting"
@@ -46,11 +54,11 @@ const DigitalTransformationSection = () => {
                 </div>
 
                 {/* CEO Info */}
-                <div className="space-y-2">
-                  <h3 className="text-xl font-bold text-gray-900">
+                <div className="space-y-1">
+                  <h3 className="text-2xl font-bold text-gray-900">
                     Oladimeji Alao
                   </h3>
-                  <p className="text-lg text-gray-600">
+                  <p className="text-gray-600 text-lg">
                     CEO, Latila Consulting
                   </p>
                 </div>

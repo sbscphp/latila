@@ -25,24 +25,13 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="bg-white py-16 lg:py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+   <section className="bg-white pt-16 lg:pt-24 pb-0">
+      <div className="w-full">
         {/* Section Header */}
-        <div className="mb-12 flex items-center justify-between">
-          <h2
-            className="text-lg font-bold uppercase tracking-wider"
-            style={{ color: "#00447D" }}
-          >
-            CONTACT US
-          </h2>
-                  <div className="flex space-x-0.5">
-            <div className="w-6 h-2 rounded-lg" style={{ backgroundColor: "#00447D"}}></div>
-            <div className="w-2 h-2 rounded-lg" style={{ backgroundColor: "#4EB2FF"}}></div>
-          </div>
-        </div>
+       
 
         {/* Content area with light blue background */}
-        <div className="rounded-3xl p-8" style={{ backgroundColor: "#E6F2FF" }}>
+        <div className=" p-8" style={{ backgroundColor: "#E6F2FF" }}>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left Content - Image */}
