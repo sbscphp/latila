@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 const FAQSection = () => {
-  const [openIndex, setOpenIndex] = useState(1); // Second item open by default
+  const [openIndex, setOpenIndex] = useState(1); 
 
   const faqs = [
     {
@@ -27,25 +27,16 @@ const FAQSection = () => {
     <section className=" py-16 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-12 flex items-center justify-between">
-          <h2
-            className="text-lg font-bold uppercase tracking-wider"
-            style={{ color: "#00447D" }}
-          >
-            FREQUENTLY ASKED QUESTIONS
-          </h2>
-         <div className="flex space-x-0.5">
-            <div className="w-6 h-2 rounded-lg" style={{ backgroundColor: "#00447D"}}></div>
-            <div className="w-2 h-2 rounded-lg" style={{ backgroundColor: "#4EB2FF"}}></div>
-          </div>
-        </div>
+        
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Left Content */}
           <div>
             <div className="space-y-6">
-              <h3 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
-                You have questions,<br />we have answers
+              <h3 className="text-4xl md:text-5xl font-semibold leading-tight"
+              style={{ color: "#1D2939"}}
+              >
+               Frequently Asked questions
               </h3>
 
               <p className="text-gray-600 leading-relaxed">
@@ -73,7 +64,7 @@ const FAQSection = () => {
                   <div className="flex-shrink-0">
                     <div
                       className="w-8 h-8 rounded-full flex items-center justify-center transition-colors"
-                      style={{ backgroundColor: openIndex === index ? "#00BFFF" : "#00447D" }}
+                      style={{ backgroundColor: openIndex === index ? "#01C6FA" : "#01C6FA" }}
                     >
                       {openIndex === index ? (
                         <svg

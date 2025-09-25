@@ -30,18 +30,7 @@ const ServicesSection = () => {
     <section className="bg-gray-50 py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-12 flex items-center justify-between">
-          <h2
-            className="text-lg font-bold uppercase tracking-wider"
-            style={{ color: "#00447D" }}
-          >
-            SERVICES
-          </h2>
-                 <div className="flex space-x-0.5">
-            <div className="w-6 h-2 rounded-lg" style={{ backgroundColor: "#00447D"}}></div>
-            <div className="w-2 h-2 rounded-lg" style={{ backgroundColor: "#4EB2FF"}}></div>
-          </div>
-        </div>
+        
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Content */}

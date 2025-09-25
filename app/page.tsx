@@ -3,7 +3,7 @@ import HeroSection from "./components/sections/HeroSection";
 import AboutSection from "./components/sections/AboutSection";
 import WhyChooseUsSection from "./components/sections/WhyChooseUsSection";
 import ServicesSection from "./components/sections/ServicesSection";
-import BlogSection from "./components/sections/BlogSection";
+// import BlogSection from "./components/sections/BlogSection";
 import FAQSection from "./components/sections/FAQSection";
 import ContactSection from "./components/sections/ContactSection";
 import Footer from "./components/layout/Footer";
@@ -17,7 +17,7 @@ export default function Home() {
         <AboutSection />
         <WhyChooseUsSection />
         <ServicesSection />
-        <BlogSection />
+        {/* <BlogSection /> */}
         <FAQSection />
         <ContactSection />
       </main>

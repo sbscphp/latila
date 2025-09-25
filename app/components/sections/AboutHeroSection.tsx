@@ -3,22 +3,20 @@
 const AboutHeroSection = () => {
   return (
     <section
-      className="relative py-24 lg:py-32"
+      className="relative py-24 lg:py-32 overflow-hidden"
       style={{ backgroundColor: "#00447D" }}
     >
-      {/* Background Image */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+        className="absolute inset-0 bg-no-repeat bg-right bg-contain opacity-40"
         style={{
-          backgroundImage: "url('/assets/images/consultation.png')",
-          filter: "brightness(0.3) sepia(1) hue-rotate(200deg) saturate(2)",
+          backgroundImage: "url('/assets/images/about logo.png')",
         }}
       ></div>
 
       {/* Content */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+ <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+        <div className="text-left pt-8 lg:pt-16 pl-4 lg:pl-8">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold text-white tracking-tight">
             About Us
           </h1>
         </div>
