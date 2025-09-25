@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const HeroSection = () => {
   return (
-    <section className="bg-white py-16 lg:py-24">
+    <section className="bg-white py-16 lg:py-24" id="/">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column - Content */}
@@ -21,8 +21,10 @@ const HeroSection = () => {
             </h1>
 
             {/* Description */}
-            <p className="text-lg mb-8 leading-relaxed"
-             style={{ color: "#667085"}}>
+            <p
+              className="text-lg mb-8 leading-relaxed"
+              style={{ color: "#667085" }}
+            >
               At Latila Consulting, we specialize in delivering cutting-edge IT
               solutions that drive business growth. From cloud migration to
               end-to-end project management, our team ensures your technology
@@ -35,12 +37,10 @@ const HeroSection = () => {
                 href="/contact"
                 className="inline-flex items-center text-white px-8 py-4 rounded-full text-lg font-medium transition-colors"
                 style={{ backgroundColor: "#00447D" }}
-                onMouseEnter={(e) => (e.target.style.backgroundColor = "#003366")}
-                onMouseLeave={(e) => (e.target.style.backgroundColor = "#00447D")}
               >
                 <span>Contact Us</span>
-                <img 
-                  src="/assets/images/arrow.png" 
+                <img
+                  src="/assets/images/arrow.png"
                   alt=""
                   style={{ width: "16px", height: "16px", marginLeft: "8px" }}
                 />

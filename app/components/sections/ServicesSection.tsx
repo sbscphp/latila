@@ -27,10 +27,9 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section className="bg-gray-50 py-16 lg:py-20">
+    <section className="bg-gray-50 py-16 lg:py-20" id="services">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Content */}
@@ -52,9 +51,11 @@ const ServicesSection = () => {
                 style={{ backgroundColor: "#00447D" }}
               >
                 <span>Contact Us</span>
-              <img src="/assets/images/arrow.png" alt=""
-              style={{ width: "16px", height: "16px", marginLeft: "8px"}}
-              />
+                <img
+                  src="/assets/images/arrow.png"
+                  alt=""
+                  style={{ width: "16px", height: "16px", marginLeft: "8px" }}
+                />
               </Link>
             </div>
 

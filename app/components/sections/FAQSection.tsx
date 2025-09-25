@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 const FAQSection = () => {
-  const [openIndex, setOpenIndex] = useState(1); 
+  const [openIndex, setOpenIndex] = useState(1);
 
   const faqs = [
     {
@@ -24,23 +24,24 @@ const FAQSection = () => {
   ];
 
   return (
-    <section className=" py-16 lg:py-24">
+    <section className=" py-16 lg:py-24" id="faq">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Left Content */}
           <div>
             <div className="space-y-6">
-              <h3 className="text-4xl md:text-5xl font-semibold leading-tight"
-              style={{ color: "#1D2939"}}
+              <h3
+                className="text-4xl md:text-5xl font-semibold leading-tight"
+                style={{ color: "#1D2939" }}
               >
-               Frequently Asked questions
+                Frequently Asked questions
               </h3>
 
               <p className="text-gray-600 leading-relaxed">
-                Latila Consulting is here to answer your questions about us and our services. Contact us for further questions you wish to ask.
+                Latila Consulting is here to answer your questions about us and
+                our services. Contact us for further questions you wish to ask.
               </p>
             </div>
           </div>
@@ -48,10 +49,10 @@ const FAQSection = () => {
           {/* Right Content - FAQ Accordion */}
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <div 
-                key={faq.question} 
+              <div
+                key={faq.question}
                 className={`rounded-2xl transition-all ${
-                  openIndex === index ? 'bg-white shadow-sm' : 'bg-gray-100'
+                  openIndex === index ? "bg-white shadow-sm" : "bg-gray-100"
                 }`}
               >
                 <button
@@ -64,7 +65,10 @@ const FAQSection = () => {
                   <div className="flex-shrink-0">
                     <div
                       className="w-8 h-8 rounded-full flex items-center justify-center transition-colors"
-                      style={{ backgroundColor: openIndex === index ? "#01C6FA" : "#01C6FA" }}
+                      style={{
+                        backgroundColor:
+                          openIndex === index ? "#01C6FA" : "#01C6FA",
+                      }}
                     >
                       {openIndex === index ? (
                         <svg

@@ -38,7 +38,7 @@ const WhyChooseUsSection = () => {
   ];
 
   return (
-    <section className="bg-white py-12 md:py-16 lg:py-20">
+    <section className="bg-white py-12 md:py-16 lg:py-20" id="why-choose-us">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Custom column ratios */}
         <div className="grid grid-cols-1 lg:grid-cols-[35%_65%] gap-6 lg:gap-10 items-start">
