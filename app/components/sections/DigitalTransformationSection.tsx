@@ -36,9 +36,9 @@ const DigitalTransformationSection = () => {
               <div className="text-center">
                 {/* CEO Image */}
                 <div className="mb-6">
-                  <div className="w-48 h-48 mx-auto rounded-2xl overflow-hidden shadow-lg">
+                  <div className="w-72 h-72 mx-auto rounded-2xl overflow-hidden shadow-lg">
                     <img
-                      src="/assets/images/Frame 4 (2).png"
+                      src="/assets/images/oladimeji.png"
                       alt="Oladimeji Alao, CEO of Latila Consulting"
                       className="w-full h-full object-cover"
                     />

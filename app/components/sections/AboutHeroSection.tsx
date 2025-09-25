@@ -10,7 +10,7 @@ const AboutHeroSection = () => {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
         style={{
-          backgroundImage: "url('/assets/images/Frame 4.png')",
+          backgroundImage: "url('/assets/images/consultation.png')",
           filter: "brightness(0.3) sepia(1) hue-rotate(200deg) saturate(2)",
         }}
       ></div>

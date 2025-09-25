@@ -12,7 +12,7 @@ const BlogSection = () => {
       image: (
         <div className="w-full h-48 rounded-t-xl overflow-hidden">
           <img
-            src="/assets/images/Rectangle 1.png"
+            src="/assets/images/Photos.png"
             alt="Blog post about productivity"
             className="w-full h-full object-cover"
           />
@@ -29,7 +29,7 @@ const BlogSection = () => {
       image: (
         <div className="w-full h-48 rounded-t-xl overflow-hidden">
           <img
-            src="/assets/images/Rectangle 1.png"
+            src="/assets/images/photos.png"
             alt="Blog post about productivity"
             className="w-full h-full object-cover"
           />
@@ -46,7 +46,7 @@ const BlogSection = () => {
       image: (
         <div className="w-full h-48 rounded-t-xl overflow-hidden">
           <img
-            src="/assets/images/Rectangle 1.png"
+            src="/assets/images/Photos.png"
             alt="Blog post about productivity"
             className="w-full h-full object-cover"
           />
@@ -59,13 +59,17 @@ const BlogSection = () => {
     <section className="bg-white py-16 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="mb-16">
+       <div className="mb-16 flex items-center justify-between">
           <h2
-            className="text-sm font-semibold uppercase tracking-wider mb-4"
+            className="text-lg font-bold uppercase tracking-wider"
             style={{ color: "#00447D" }}
           >
             BLOGS & RESOURCES
           </h2>
+         <div className="flex space-x-0.5">
+            <div className="w-6 h-2 rounded-lg" style={{ backgroundColor: "#00447D"}}></div>
+            <div className="w-2 h-2 rounded-lg" style={{ backgroundColor: "#4EB2FF"}}></div>
+          </div>
         </div>
 
         {/* Blog Posts Grid */}
@@ -82,7 +86,8 @@ const BlogSection = () => {
               <div className="p-6">
                 {/* Tag and Date */}
                 <div className="flex justify-between items-center mb-4">
-                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                  <span className=" px-3 py-1 rounded-full text-sm font-medium" 
+                  style={{ backgroundColor: "#E7F5F2", color: "#5ACAAD", border:"1px solid #5ACAAD"}}>
                     {post.tag}
                   </span>
                   <span className="text-gray-500 text-sm">{post.date}</span>
@@ -90,14 +95,15 @@ const BlogSection = () => {
 
                 {/* Title */}
                 <h3
-                  className="text-xl font-bold mb-3"
-                  style={{ color: "#00447D" }}
+                  className="text-xl font-semibold mb-3"
+                  style={{ color: "#1D2939" }}
                 >
                   {post.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-gray-600 mb-4 leading-relaxed">
+                <p className=" mb-4 leading-relaxed"
+                style={{color: "#000000"}}>
                   {post.description}
                 </p>
 
