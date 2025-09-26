@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import FadeInLeft from "../animations/FadeInLeft";
+import FadeInRight from "../animations/FadeInRight";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -10,7 +12,9 @@ const ContactSection = () => {
     message: "",
   });
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -18,7 +22,7 @@ const ContactSection = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission here
     console.log("Form submitted:", formData);
@@ -33,106 +37,110 @@ const ContactSection = () => {
         <div className=" p-8" style={{ backgroundColor: "#E6F2FF" }}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* Left Content - Image */}
-            <div>
-              <div className="rounded-2xl overflow-hidden">
-                <img
-                  src="/assets/images/contact us.png"
-                  alt="Professional support team at Latila Consulting"
-                  className="w-full h-auto object-cover"
-                />
+            <FadeInLeft delay={0.2}>
+              <div>
+                <div className="rounded-2xl overflow-hidden">
+                  <img
+                    src="/assets/images/contact us.png"
+                    alt="Professional support team at Latila Consulting"
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
               </div>
-            </div>
+            </FadeInLeft>
 
             {/* Right Content - Contact Form */}
-            <div>
-              <div className="bg-white rounded-2xl p-8 shadow-sm">
-                <div className="mb-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                    Contact Us
-                  </h3>
-                  <p className="text-gray-600 text-sm">
-                    Fill the form below to reach out to us.
-                  </p>
-                </div>
-
-                <div className="space-y-6">
-                  {/* Name Field */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      placeholder="Enter name"
-                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
-                      required
-                    />
+            <FadeInRight delay={0.4}>
+              <div>
+                <div className="bg-white rounded-2xl p-8 shadow-sm">
+                  <div className="mb-8">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                      Contact Us
+                    </h3>
+                    <p className="text-gray-600 text-sm">
+                      Fill the form below to reach out to us.
+                    </p>
                   </div>
 
-                  {/* Email and Phone in same row */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {/* Email Field */}
+                  <div className="space-y-6">
+                    {/* Name Field */}
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Email
+                        Name
                       </label>
                       <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
+                        type="text"
+                        name="name"
+                        value={formData.name}
                         onChange={handleInputChange}
-                        placeholder="Enter email address"
+                        placeholder="Enter name"
                         className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
                         required
                       />
                     </div>
 
-                    {/* Phone Field */}
+                    {/* Email and Phone in same row */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {/* Email Field */}
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Email
+                        </label>
+                        <input
+                          type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          placeholder="Enter email address"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                          required
+                        />
+                      </div>
+
+                      {/* Phone Field */}
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Phone Number
+                        </label>
+                        <input
+                          type="tel"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleInputChange}
+                          placeholder="Enter phone number"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Message Field */}
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Phone Number
+                        Message
                       </label>
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
+                      <textarea
+                        name="message"
+                        value={formData.message}
                         onChange={handleInputChange}
-                        placeholder="Enter phone number"
-                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                        placeholder="Enter message here"
+                        rows={4}
+                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none text-sm"
+                        required
                       />
                     </div>
-                  </div>
 
-                  {/* Message Field */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Message
-                    </label>
-                    <textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      placeholder="Enter message here"
-                      rows={4}
-                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none text-sm"
-                      required
-                    />
+                    {/* Submit Button */}
+                    <button
+                      onClick={handleSubmit}
+                      className="w-full text-white py-3 px-6 rounded-full font-medium transition-colors"
+                      style={{ backgroundColor: "#00447D" }}
+                    >
+                      Submit
+                    </button>
                   </div>
-
-                  {/* Submit Button */}
-                  <button
-                    onClick={handleSubmit}
-                    className="w-full text-white py-3 px-6 rounded-full font-medium transition-colors"
-                    style={{ backgroundColor: "#00447D" }}
-                  >
-                    Submit
-                  </button>
                 </div>
               </div>
-            </div>
+            </FadeInRight>
           </div>
         </div>
       </div>

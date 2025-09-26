@@ -1,5 +1,7 @@
 "use client";
 
+import FadeInUp from "../animations/FadeInUp";
+
 const AboutHeroSection = () => {
   return (
     <section
@@ -14,12 +16,14 @@ const AboutHeroSection = () => {
       ></div>
 
       {/* Content */}
- <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
-        <div className="text-left pt-8 lg:pt-16 pl-4 lg:pl-8">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold text-white tracking-tight">
-            About Us
-          </h1>
-        </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+        <FadeInUp delay={0.3}>
+          <div className="text-left pt-8 lg:pt-16 pl-4 lg:pl-8">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold text-white tracking-tight">
+              About Us
+            </h1>
+          </div>
+        </FadeInUp>
       </div>
     </section>
   );
