@@ -49,45 +49,44 @@ const Service: React.FC<{
   );
 };
 
-const ServicesSection = () => {
-  const services: IService[] = [
-    {
-      id: 0,
-      title: "Cloud Advisory & Migration",
-      image: "/assets/images/services1.png",
-      description:
-        "Strategy, readiness assessments, and migration across AWS, Azure, GCP, and hybrid environments.",
-    },
-    {
-      id: 1,
-      title: "Cybersecurity & Compliance",
-      image: "/assets/images/services2.png",
-      description:
-        "Protecting data and operations with security frameworks mapped NDPR, GDPR, PCI-DSS, SOC2 and ISO 27001",
-    },
-    {
-      id: 2,
-      title: "Enterprise Application Modernization",
-      image: "/assets/images/services3.png",
-      description:
-        "Enhancing legacy systems and enabling cloud-native applications.",
-    },
-    {
-      id: 3,
-      title: "IT Consulting & Project Management",
-      image: "/assets/images/services4.png",
-      description:
-        "Expertise in Agile, Waterfall, and Hybrid methodologies to ",
-    },
-    {
-      id: 4,
-      title: "Management Services",
-      image: "/assets/images/services5.png",
-      description:
-        "End-to-end managed IT services for continuous improvement and operational excellence.",
-    },
-  ];
+const services: IService[] = [
+  {
+    id: 0,
+    title: "Cloud Advisory & Migration",
+    image: "/assets/images/services1.png",
+    description:
+      "Strategy, readiness assessments, and migration across AWS, Azure, GCP, and hybrid environments.",
+  },
+  {
+    id: 1,
+    title: "Cybersecurity & Compliance",
+    image: "/assets/images/services2.png",
+    description:
+      "Protecting data and operations with security frameworks mapped NDPR, GDPR, PCI-DSS, SOC2 and ISO 27001",
+  },
+  {
+    id: 2,
+    title: "Enterprise Application Modernization",
+    image: "/assets/images/services3.png",
+    description:
+      "Enhancing legacy systems and enabling cloud-native applications.",
+  },
+  {
+    id: 3,
+    title: "IT Consulting & Project Management",
+    image: "/assets/images/services4.png",
+    description: "Expertise in Agile, Waterfall, and Hybrid methodologies to ",
+  },
+  {
+    id: 4,
+    title: "Management Services",
+    image: "/assets/images/services5.png",
+    description:
+      "End-to-end managed IT services for continuous improvement and operational excellence.",
+  },
+];
 
+const ServicesSection = () => {
   const [activeId, setActiveId] = useState<number | null>(null);
   const handleToggle = (id: number) =>
     setActiveId((prev) => (prev === id ? null : id));
@@ -98,7 +97,7 @@ const ServicesSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Content */}
           <div className="lg:col-span-4 space-y-6">
-<h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900 leading-tight">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900 leading-tight">
               What We Offer
             </h2>
 

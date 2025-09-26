@@ -4,27 +4,32 @@ import { useState } from "react";
 import FadeInLeft from "../animations/FadeInLeft";
 import StaggerContainer from "../animations/StaggerContainer";
 import StaggerItem from "../animations/StaggerItem";
+import { useFetchData } from "@/app/hooks/useApis";
+
+const faqs = [
+  {
+    question: "Who we are?",
+    answer:
+      "We are a team of technology enthusiasts dedicated to helping businesses embrace digital transformation.",
+  },
+  {
+    question: "What services does Latila Ventures provide?",
+    answer:
+      "We specialize in IT consulting, cloud migration, project management, and digital transformation solutions designed to help businesses scale efficiently.",
+  },
+  {
+    question: "How can I get a quote for my project?",
+    answer:
+      "You can contact us through our contact form or reach out directly to discuss your project requirements and receive a customized quote.",
+  },
+];
 
 const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState(1);
 
-  const faqs = [
-    {
-      question: "Who we are?",
-      answer:
-        "We are a team of technology enthusiasts dedicated to helping businesses embrace digital transformation.",
-    },
-    {
-      question: "What services does Latila Ventures provide?",
-      answer:
-        "We specialize in IT consulting, cloud migration, project management, and digital transformation solutions designed to help businesses scale efficiently.",
-    },
-    {
-      question: "How can I get a quote for my project?",
-      answer:
-        "You can contact us through our contact form or reach out directly to discuss your project requirements and receive a customized quote.",
-    },
-  ];
+  const { data: faqsData, isLoading } = useFetchData("faqs");
+
+  console.log(faqsData?.data);
 
   return (
     <section className=" py-16 lg:py-24" id="faq">
@@ -51,73 +56,78 @@ const FAQSection = () => {
 
           {/* Right Content - FAQ Accordion */}
           <StaggerContainer className="space-y-4">
-            {faqs.map((faq, index) => (
-              <StaggerItem key={faq.question} direction="up">
-                <div
-                  className={`rounded-2xl transition-all ${
-                    openIndex === index ? "bg-gray-100 shadow-sm" : "bg-gray-100"
-                  }`}
-                >
-                  <button
-                    className="w-full px-6 py-6 text-left flex justify-between items-center focus:outline-none"
-                    onClick={() =>
-                      setOpenIndex(openIndex === index ? -1 : index)
-                    }
+            {faqsData?.data?.map((faq: any, index: number) => {
+              console.log(faq);
+              return (
+                <StaggerItem key={faq?.id} direction="up">
+                  <div
+                    className={`rounded-2xl transition-all ${
+                      openIndex === index
+                        ? "bg-gray-100 shadow-sm"
+                        : "bg-gray-100"
+                    }`}
                   >
-                    <span className="text-lg font-semibold text-gray-900 pr-4">
-                      {faq.question}
-                    </span>
-                    <div className="flex-shrink-0">
-                      <div
-                        className="w-8 h-8 rounded-full flex items-center justify-center transition-colors"
-                        style={{
-                          backgroundColor:
-                            openIndex === index ? "#01C6FA" : "#01C6FA",
-                        }}
-                      >
-                        {openIndex === index ? (
-                          <svg
-                            className="w-4 h-4 text-white"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M20 12H4"
-                            />
-                          </svg>
-                        ) : (
-                          <svg
-                            className="w-4 h-4 text-white"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                            />
-                          </svg>
-                        )}
+                    <button
+                      className="w-full px-6 py-6 text-left flex justify-between items-center focus:outline-none"
+                      onClick={() =>
+                        setOpenIndex(openIndex === index ? -1 : index)
+                      }
+                    >
+                      <span className="text-lg font-semibold text-gray-900 pr-4">
+                        {faq?.title}
+                      </span>
+                      <div className="flex-shrink-0">
+                        <div
+                          className="w-8 h-8 rounded-full flex items-center justify-center transition-colors"
+                          style={{
+                            backgroundColor:
+                              openIndex === index ? "#01C6FA" : "#01C6FA",
+                          }}
+                        >
+                          {openIndex === index ? (
+                            <svg
+                              className="w-4 h-4 text-white"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M20 12H4"
+                              />
+                            </svg>
+                          ) : (
+                            <svg
+                              className="w-4 h-4 text-white"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                              />
+                            </svg>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  </button>
+                    </button>
 
-                  {openIndex === index && (
-                    <div className="px-6 pb-6">
-                      <p className="text-gray-600 leading-relaxed">
-                        {faq.answer}
-                      </p>
-                    </div>
-                  )}
-                </div>
-              </StaggerItem>
-            ))}
+                    {openIndex === index && (
+                      <div className="px-6 pb-6">
+                        <p className="text-gray-600 leading-relaxed">
+                          {faq?.detail}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </StaggerItem>
+              );
+            })}
           </StaggerContainer>
         </div>
       </div>
