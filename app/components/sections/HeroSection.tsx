@@ -5,19 +5,17 @@ import { useState, useEffect } from "react";
 
 const HeroSection = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  
+
   // Array of hero images
   const heroImages = [
     "/assets/images/hero.png",
     "/assets/images/star hero.png",
-    "/assets/images/circle hero.png" 
+    "/assets/images/circle hero.png",
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
-        (prevIndex + 1) % heroImages.length
-      );
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
     }, 3000);
 
     return () => clearInterval(interval);
@@ -41,8 +39,10 @@ const HeroSection = () => {
             </h1>
 
             {/* Description */}
-            <p className="text-lg mb-8 leading-relaxed"
-             style={{ color: "#667085"}}>
+            <p
+              className="text-lg mb-8 leading-relaxed"
+              style={{ color: "#667085" }}
+            >
               At Latila Consulting, we specialize in delivering cutting-edge IT
               solutions that drive business growth. From cloud migration to
               end-to-end project management, our team ensures your technology
@@ -50,36 +50,49 @@ const HeroSection = () => {
             </p>
 
             {/* CTA Button */}
-            <div>
-              <Link
-                href="/contact"
-                className="inline-flex items-center text-white px-8 py-4 rounded-full text-lg font-medium transition-colors"
-                style={{ backgroundColor: "#00447D" }}
-                onMouseEnter={(e) => (e.target.style.backgroundColor = "#003366")}
-                onMouseLeave={(e) => (e.target.style.backgroundColor = "#00447D")}
-              >
-                <span>Contact Us</span>
-                <img 
-                  src="/assets/images/arrow.png" 
-                  alt=""
-                  style={{ width: "16px", height: "16px", marginLeft: "8px" }}
-                />
-              </Link>
-            </div>
+            <Link
+              href="/#contact"
+              scroll={true}
+              className="inline-flex px-6 py-2 rounded-full transition-all duration-200 items-center space-x-2 w-fit"
+              style={{ backgroundColor: "#00447D", color: "white" }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "#60A5FA";
+                e.currentTarget.querySelector("span").style.color = "#1e3a8a";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "#00447D";
+                e.currentTarget.querySelector("span").style.color = "white";
+              }}
+              onMouseDown={(e) => {
+                e.currentTarget.style.backgroundColor = "#93C5FD";
+                e.currentTarget.querySelector("span").style.color = "#1e3a8a";
+              }}
+              onMouseUp={(e) => {
+                e.currentTarget.style.backgroundColor = "#60A5FA";
+                e.currentTarget.querySelector("span").style.color = "#1e3a8a";
+              }}
+            >
+              <span style={{ color: "white" }}>Contact Us</span>
+              <img
+                src="/assets/images/arrow.png"
+                alt=""
+                style={{ width: "16px", height: "16px" }}
+              />
+            </Link>
           </div>
 
           {/* Right Column - Rotating Hero Images */}
           <div className="flex justify-center lg:justify-end">
             <div className="relative">
               {/* Main rotating image */}
-  <img
+              <img
                 src={heroImages[currentImageIndex]}
-                alt={`Hero image ${currentImageIndex + 1} representing innovation and technology`}
+                alt={`Hero image ${
+                  currentImageIndex + 1
+                } representing innovation and technology`}
                 className="w-full max-w-lg h-auto object-contain transition-opacity duration-1000 ease-in-out"
                 key={currentImageIndex} // Forces re-render for smooth transition
               />
-              
-
             </div>
           </div>
         </div>

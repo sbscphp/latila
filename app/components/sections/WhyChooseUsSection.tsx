@@ -43,13 +43,13 @@ const WhyChooseUsSection = () => {
 
   return (
     <section className="bg-white py-12 md:py-16 lg:py-20" id="why-choose-us">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
         {/* Custom column ratios */}
         <div className="grid grid-cols-1 lg:grid-cols-[35%_65%] gap-6 lg:gap-10 items-start">
           {/* Left Column - Header Text */}
           <FadeInLeft delay={0.2}>
             <div className="space-y-4 md:space-y-6">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+              <h2 className="text-xl md:text-4xl lg:text-5xl font-semibold text-gray-900 leading-tight">
                 Why Choose Us
               </h2>
               <p className="text-base md:text-lg text-gray-600 leading-relaxed">
@@ -103,7 +103,7 @@ const WhyChooseUsSection = () => {
               ></div>
 
               {/* Right Features */}
-              <StaggerContainer className="flex-1 space-y-6 md:space-y-8 lg:pl-8">
+              <StaggerContainer className="flex-1 space-y-6 md:space-y-8 lg:pr-8">
                 {rightFeatures.map((feature) => (
                   <StaggerItem key={feature.title} direction="up">
                     <div className="flex items-start space-x-4 bg-white rounded-2xl shadow-sm p-4 md:p-6">

@@ -36,12 +36,9 @@ const FAQSection = () => {
           <FadeInLeft delay={0.2}>
             <div>
               <div className="space-y-6">
-                <h3
-                  className="text-4xl md:text-5xl font-semibold leading-tight"
-                  style={{ color: "#1D2939" }}
-                >
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900 leading-tight">
                   Frequently Asked questions
-                </h3>
+                </h2>
 
                 <p className="text-gray-600 leading-relaxed">
                   Latila Consulting is here to answer your questions about us
