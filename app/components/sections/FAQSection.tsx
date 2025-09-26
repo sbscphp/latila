@@ -58,7 +58,7 @@ const FAQSection = () => {
               <StaggerItem key={faq.question} direction="up">
                 <div
                   className={`rounded-2xl transition-all ${
-                    openIndex === index ? "bg-white shadow-sm" : "bg-gray-100"
+                    openIndex === index ? "bg-gray-100 shadow-sm" : "bg-gray-100"
                   }`}
                 >
                   <button
