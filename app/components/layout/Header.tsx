@@ -58,10 +58,26 @@ const Header = () => {
             <Link
               href="/#contact"
               scroll={true}
-              className="text-white px-6 py-2 rounded-full transition-colors flex items-center space-x-2"
-              style={{ backgroundColor: "#00447D" }}
+              className="px-6 py-2 rounded-full transition-all duration-200 flex items-center space-x-2"
+              style={{ backgroundColor: "#00447D", color: "white" }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "#60A5FA";
+                e.currentTarget.querySelector('span').style.color = "#1e3a8a";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "#00447D";
+                e.currentTarget.querySelector('span').style.color = "white";
+              }}
+              onMouseDown={(e) => {
+                e.currentTarget.style.backgroundColor = "#93C5FD";
+                e.currentTarget.querySelector('span').style.color = "#1e3a8a";
+              }}
+              onMouseUp={(e) => {
+                e.currentTarget.style.backgroundColor = "#60A5FA";
+                e.currentTarget.querySelector('span').style.color = "#1e3a8a";
+              }}
             >
-              <span>Contact Us</span>
+              <span style={{ color: "white" }}>Contact Us</span>
               <img
                 src="/assets/images/arrow.png"
                 alt=""
@@ -115,10 +131,26 @@ const Header = () => {
               <Link
                 href="/#contact"
                 scroll={true}
-                className="text-white px-6 py-2 rounded-lg transition-colors flex items-center space-x-2 w-fit"
-                style={{ backgroundColor: "#00447D" }}
+                className="px-6 py-2 rounded-lg transition-all duration-200 flex items-center space-x-2 w-fit"
+                style={{ backgroundColor: "#00447D", color: "white" }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = "#60A5FA";
+                  e.currentTarget.querySelector('span').style.color = "#1e3a8a";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "#00447D";
+                  e.currentTarget.querySelector('span').style.color = "white";
+                }}
+                onMouseDown={(e) => {
+                  e.currentTarget.style.backgroundColor = "#93C5FD";
+                  e.currentTarget.querySelector('span').style.color = "#1e3a8a";
+                }}
+                onMouseUp={(e) => {
+                  e.currentTarget.style.backgroundColor = "#60A5FA";
+                  e.currentTarget.querySelector('span').style.color = "#1e3a8a";
+                }}
               >
-                <span>Contact Us</span>
+                <span style={{ color: "white" }}>Contact Us</span>
               </Link>
             </nav>
           </div>

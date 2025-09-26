@@ -61,3 +61,28 @@ body {
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
+
+
+
+
+.card-component .card-image {
+height: 192px;
+transition: height 0.3s ease;
+}
+
+.card-component:hover .card-image {
+  height: 150px;
+  transition: height 0.3s ease;
+}
+
+
+.card-component .desc {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+
+.card-component:hover .desc {
+  max-height: 200px; /* Adjust based on content */
+}
