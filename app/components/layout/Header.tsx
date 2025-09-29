@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 // import { usePathname } from "next/navigation";
@@ -27,9 +28,11 @@ const Header = () => {
                 className="rounded-lg flex items-center justify-center bg-white"
                 style={{ width: "143px", height: "54px" }}
               >
-                <img
+                <Image
                   src="/assets/images/content.png"
                   alt="Latila Consulting Logo"
+                  width={143}
+                  height={54}
                 />
               </div>
             </div>

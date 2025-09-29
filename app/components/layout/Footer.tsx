@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 
 const Footer = () => {
@@ -12,9 +13,11 @@ const Footer = () => {
             className=" rounded-lg flex items-center justify-center text-white"
             style={{ width: "143px", height: "54px" }}
           >
-            <img
+            <Image
               src="/assets/images/LATILA LOGO.png"
               alt="Latila Consulting Logo"
+              width={143}
+              height={54}
             />
           </div>
 
