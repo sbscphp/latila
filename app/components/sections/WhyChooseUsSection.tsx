@@ -5,36 +5,30 @@ import FadeInLeft from "../animations/FadeInLeft";
 import StaggerContainer from "../animations/StaggerContainer";
 import StaggerItem from "../animations/StaggerItem";
 import { useFetchData } from "@/app/hooks/useApis";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
-const rightFeatures = [
-  {
-    img: "/assets/images/FRAME7.png",
-    title: "Adaptability",
-    description:
-      "Skilled in multiple delivery methodologies (Agile, Waterfall, Hybrid), tailored to client needs",
-  },
-  {
-    img: "/assets/images/FRAME7.png",
-    title: "Client-Centric Partnership",
-    description:
-      "We align technology with your business objectives, not the other way around.",
-  },
-];
+interface FeatureItem {
+  title: string;
+  description: string;
+  icon: string;
+}
 
 const WhyChooseUsSection = () => {
-  const [data, setData] = useState<{ left: any[]; right: any[] }>({
+  const [data, setData] = useState<{
+    left: FeatureItem[];
+    right: FeatureItem[];
+  }>({
     left: [],
     right: [],
   });
 
-  const arrayDivider = (arr: any[]) => Math.ceil(arr.length / 2);
-  const splitArray = (arr: any[]) => {
+  const arrayDivider = (arr: FeatureItem[]) => Math.ceil(arr.length / 2);
+  const splitArray = useCallback((arr: FeatureItem[]) => {
     const mid = arrayDivider(arr);
     const left = arr.slice(0, mid);
     const right = arr.slice(mid);
     setData({ left, right });
-  };
+  }, []);
 
   const { data: whyChooseUs, isLoading } = useFetchData(
     "why-choose-uses?populate=*"
@@ -44,15 +38,17 @@ const WhyChooseUsSection = () => {
     if (!whyChooseUs?.data) {
       return;
     }
-    const mappedData = whyChooseUs.data.map((item: any) => {
-      return {
-        title: item.title,
-        description: item.desc,
-        icon: item.icon?.url,
-      };
-    });
+    const mappedData: FeatureItem[] = whyChooseUs.data.map(
+      (item: { title: string; desc: string; icon: { url: string } }) => {
+        return {
+          title: item.title,
+          description: item.desc,
+          icon: item.icon?.url,
+        };
+      }
+    );
     splitArray(mappedData);
-  }, [whyChooseUs?.data]);
+  }, [whyChooseUs?.data, splitArray]);
   return (
     <section className="bg-white py-12 md:py-16 lg:py-20" id="why-choose-us">
       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
@@ -83,7 +79,7 @@ const WhyChooseUsSection = () => {
                 </div>
               ) : (
                 <StaggerContainer className="flex-1 space-y-6 md:space-y-8 lg:pr-8">
-                  {data?.left.map((feature: any) => (
+                  {data?.left.map((feature: FeatureItem) => (
                     <StaggerItem key={feature.title} direction="up">
                       <div className="flex items-start space-x-4 bg-white rounded-2xl shadow-sm p-4 md:p-6">
                         <div className="flex-shrink-0">

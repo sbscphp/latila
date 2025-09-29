@@ -6,28 +6,16 @@ import StaggerContainer from "../animations/StaggerContainer";
 import StaggerItem from "../animations/StaggerItem";
 import { useFetchData } from "@/app/hooks/useApis";
 
-const faqs = [
-  {
-    question: "Who we are?",
-    answer:
-      "We are a team of technology enthusiasts dedicated to helping businesses embrace digital transformation.",
-  },
-  {
-    question: "What services does Latila Ventures provide?",
-    answer:
-      "We specialize in IT consulting, cloud migration, project management, and digital transformation solutions designed to help businesses scale efficiently.",
-  },
-  {
-    question: "How can I get a quote for my project?",
-    answer:
-      "You can contact us through our contact form or reach out directly to discuss your project requirements and receive a customized quote.",
-  },
-];
+interface FAQItem {
+  id: string;
+  title: string;
+  detail: string;
+}
 
 const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState(1);
 
-  const { data: faqsData, isLoading } = useFetchData("faqs");
+  const { data: faqsData } = useFetchData("faqs");
 
   console.log(faqsData?.data);
 
@@ -56,7 +44,7 @@ const FAQSection = () => {
 
           {/* Right Content - FAQ Accordion */}
           <StaggerContainer className="space-y-4">
-            {faqsData?.data?.map((faq: any, index: number) => {
+            {faqsData?.data?.map((faq: FAQItem, index: number) => {
               console.log(faq);
               return (
                 <StaggerItem key={faq?.id} direction="up">

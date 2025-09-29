@@ -4,7 +4,7 @@ import { axiosInstance, baseUrl } from "../utils/axios-instance";
 // Create Data
 export const usePostData = (url: string) => {
   const mutation = useMutation({
-    mutationFn: async (arg: any) => {
+    mutationFn: async (arg: Record<string, unknown>) => {
       const response = await axiosInstance.post(baseUrl + url, arg);
       return response.data;
     },

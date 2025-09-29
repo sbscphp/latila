@@ -1,104 +1,12 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { useFetchData } from "@/app/hooks/useApis";
 
-type IService = {
-  id: number;
-  description: string;
-  image: string;
-  title: string;
-};
-
-const Service: React.FC<{
-  service: IService;
-}> = ({ service }) => {
-  return (
-    <div
-      key={service.id}
-      className="
-                  bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer
-                  card-component p-5 flex flex-col h-full
-                  "
-    >
-      <img
-        src={service.image}
-        alt={service.title}
-        className="
-                    w-full object-cover
-                    card-image rounded-[22px]
-                    "
-      />
-
-      <div className="p-4">
-        <h4 className="text-2xl font-semibold text-gray-900 text-left leading-tight">
-          {service.title}
-        </h4>
-        {
-          <p
-            className="
-                      text-gray-600 text-sm mt-2
-                      desc
-                      "
-          >
-            {service.description}
-          </p>
-        }
-      </div>
-    </div>
-  );
-};
-
-// Hardcoded services array
-const hardcodedServices: IService[] = [
-  {
-    id: 0,
-    title: "Cloud Advisory & Migration",
-    image: "/assets/images/services1.png",
-    description:
-      "Strategy, readiness assessments, and migration across AWS, Azure, GCP, and hybrid environments.",
-  },
-  {
-    id: 1,
-    title: "Cybersecurity & Compliance",
-    image: "/assets/images/services2.png",
-    description:
-      "Protecting data and operations with security frameworks mapped NDPR, GDPR, PCI-DSS, SOC2 and ISO 27001",
-  },
-  {
-    id: 2,
-    title: "Enterprise Application Modernization",
-    image: "/assets/images/services3.png",
-    description:
-      "Enhancing legacy systems and enabling cloud-native applications.",
-  },
-  {
-    id: 3,
-    title: "IT Consulting & Project Management",
-    image: "/assets/images/services4.png",
-    description: "Expertise in Agile, Waterfall, and Hybrid methodologies to ",
-  },
-  {
-    id: 4,
-    title: "Management Services",
-    image: "/assets/images/services5.png",
-    description:
-      "End-to-end managed IT services for continuous improvement and operational excellence.",
-  },
-];
-
 const ServicesSection = () => {
-  const { data: apiResponse, isLoading } = useFetchData("services?populate=*");
+  const { data: apiResponse } = useFetchData("services?populate=*");
 
   console.log(apiResponse, "services from API");
-
-  const [activeId, setActiveId] = useState<number | null>(null);
-  const handleToggle = (id: number) =>
-    setActiveId((prev) => (prev === id ? null : id));
-
-  // Use hardcoded services for now since API returns empty data
-  const services = hardcodedServices;
 
   return (
     <section className="bg-gray-50 py-16 lg:py-20" id="services">
@@ -144,7 +52,9 @@ const ServicesSection = () => {
                   src={apiResponse?.data?.[0]?.image?.url || "N/A"}
                   alt={apiResponse?.data?.[0]?.title || "Service"}
                 />
-                <p className="font-semibold text-3xl">{apiResponse?.data?.[0]?.title || "N/A" }</p>
+                <p className="font-semibold text-3xl">
+                  {apiResponse?.data?.[0]?.title || "N/A"}
+                </p>
               </div>
             </div>
           </div>

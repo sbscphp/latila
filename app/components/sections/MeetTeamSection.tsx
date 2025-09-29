@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-
 const MeetTheTeamSection = () => {
   const teamMembers = [
     {
@@ -10,13 +8,13 @@ const MeetTheTeamSection = () => {
       image: "/assets/images/team2.png",
     },
     {
-      name: "Kingsley Alao", 
+      name: "Kingsley Alao",
       role: "Dev Ops Engineer",
       image: "/assets/images/team1.png",
     },
     {
       name: "Tunde Ednut",
-      role: "Senior Java Developer", 
+      role: "Senior Java Developer",
       image: "/assets/images/services3.png",
     },
     {
@@ -42,9 +40,15 @@ const MeetTheTeamSection = () => {
           >
             MEET THE TEAM
           </h2>
-           <div className="flex space-x-0.5">
-            <div className="w-6 h-2 rounded-lg" style={{ backgroundColor: "#00447D"}}></div>
-            <div className="w-2 h-2 rounded-lg" style={{ backgroundColor: "#4EB2FF"}}></div>
+          <div className="flex space-x-0.5">
+            <div
+              className="w-6 h-2 rounded-lg"
+              style={{ backgroundColor: "#00447D" }}
+            ></div>
+            <div
+              className="w-2 h-2 rounded-lg"
+              style={{ backgroundColor: "#4EB2FF" }}
+            ></div>
           </div>
         </div>
 
@@ -95,9 +99,7 @@ const MeetTheTeamSection = () => {
                   <h4 className="text-sm font-bold text-gray-900 mb-1">
                     {teamMembers[2].name}
                   </h4>
-                  <p className="text-xs text-gray-600">
-                    {teamMembers[2].role}
-                  </p>
+                  <p className="text-xs text-gray-600">{teamMembers[2].role}</p>
                 </div>
               </div>
             </div>
@@ -115,8 +117,7 @@ const MeetTheTeamSection = () => {
                   `}
                 >
                   {member && (
-                    <div className="absolute top-2 right-2 text-white text-xs px-2 py-1 rounded">
-                    </div>
+                    <div className="absolute top-2 right-2 text-white text-xs px-2 py-1 rounded"></div>
                   )}
                   <div className="h-48">
                     <img
@@ -129,9 +130,7 @@ const MeetTheTeamSection = () => {
                     <h4 className="text-lg font-bold text-gray-900 mb-1">
                       {member.name}
                     </h4>
-                    <p className="text-sm text-gray-600">
-                      {member.role}
-                    </p>
+                    <p className="text-sm text-gray-600">{member.role}</p>
                   </div>
                 </div>
               ))}
@@ -155,9 +154,7 @@ const MeetTheTeamSection = () => {
                     <h4 className="text-sm font-bold text-gray-900 mb-1">
                       {member.name}
                     </h4>
-                    <p className="text-xs text-gray-600">
-                      {member.role}
-                    </p>
+                    <p className="text-xs text-gray-600">{member.role}</p>
                   </div>
                 </div>
               ))}

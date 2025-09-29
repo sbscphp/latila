@@ -59,16 +59,22 @@ const BlogSection = () => {
     <section className="bg-white py-16 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-       <div className="mb-16 flex items-center justify-between">
+        <div className="mb-16 flex items-center justify-between">
           <h2
             className="text-lg font-bold uppercase tracking-wider"
             style={{ color: "#00447D" }}
           >
             BLOGS & RESOURCES
           </h2>
-         <div className="flex space-x-0.5">
-            <div className="w-6 h-2 rounded-lg" style={{ backgroundColor: "#00447D"}}></div>
-            <div className="w-2 h-2 rounded-lg" style={{ backgroundColor: "#4EB2FF"}}></div>
+          <div className="flex space-x-0.5">
+            <div
+              className="w-6 h-2 rounded-lg"
+              style={{ backgroundColor: "#00447D" }}
+            ></div>
+            <div
+              className="w-2 h-2 rounded-lg"
+              style={{ backgroundColor: "#4EB2FF" }}
+            ></div>
           </div>
         </div>
 
@@ -86,8 +92,14 @@ const BlogSection = () => {
               <div className="p-6">
                 {/* Tag and Date */}
                 <div className="flex justify-between items-center mb-4">
-                  <span className=" px-3 py-1 rounded-full text-sm font-medium" 
-                  style={{ backgroundColor: "#E7F5F2", color: "#5ACAAD", border:"1px solid #5ACAAD"}}>
+                  <span
+                    className=" px-3 py-1 rounded-full text-sm font-medium"
+                    style={{
+                      backgroundColor: "#E7F5F2",
+                      color: "#5ACAAD",
+                      border: "1px solid #5ACAAD",
+                    }}
+                  >
                     {post.tag}
                   </span>
                   <span className="text-gray-500 text-sm">{post.date}</span>
@@ -102,8 +114,10 @@ const BlogSection = () => {
                 </h3>
 
                 {/* Description */}
-                <p className=" mb-4 leading-relaxed"
-                style={{color: "#000000"}}>
+                <p
+                  className=" mb-4 leading-relaxed"
+                  style={{ color: "#000000" }}
+                >
                   {post.description}
                 </p>
 
@@ -112,8 +126,12 @@ const BlogSection = () => {
                   href="/blog/example-post"
                   className="inline-flex items-center font-medium"
                   style={{ color: "#00447D" }}
-                  onMouseEnter={(e) => (e.target.style.color = "#003366")}
-                  onMouseLeave={(e) => (e.target.style.color = "#00447D")}
+                  onMouseEnter={(e) =>
+                    ((e.target as HTMLElement).style.color = "#003366")
+                  }
+                  onMouseLeave={(e) =>
+                    ((e.target as HTMLElement).style.color = "#00447D")
+                  }
                 >
                   <span>Read more</span>
                   <svg

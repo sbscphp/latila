@@ -10,13 +10,19 @@ const axiosInstance = axios.create({
   },
 });
 
-const handleError = async (error: any) => {
-  if (!error.response) {
+const handleError = async (error: unknown) => {
+  if (
+    !(error as { response?: { status: number; data?: { message?: string } } })
+      .response
+  ) {
     console.log("Network error or server is unreachable.");
     return Promise.reject(new Error("Network error or server is unreachable."));
   }
 
-  const { status, data } = error.response;
+  const errorResponse = (
+    error as { response: { status: number; data?: { message?: string } } }
+  ).response;
+  const { status, data } = errorResponse;
 
   // Handle 401 errors with session expired dialog
   if (status === 401) {
