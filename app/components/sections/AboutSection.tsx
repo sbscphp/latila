@@ -3,7 +3,9 @@ import Link from "next/link";
 import FadeInLeft from "../animations/FadeInLeft";
 import FadeInRight from "../animations/FadeInRight";
 
+
 const AboutSection = () => {
+  
   return (
     <section
       className="py-16 lg:py-24 relative overflow-hidden"
