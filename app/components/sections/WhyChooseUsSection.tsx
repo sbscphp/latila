@@ -5,26 +5,7 @@ import FadeInLeft from "../animations/FadeInLeft";
 import StaggerContainer from "../animations/StaggerContainer";
 import StaggerItem from "../animations/StaggerItem";
 import { useFetchData } from "@/app/hooks/useApis";
-const leftFeatures = [
-  {
-    img: "/assets/images/FRAME7.png",
-    title: "Expertise Across Regions",
-    description:
-      "Experience delivering successful transformations in North America, Africa, and beyond",
-  },
-  {
-    img: "/assets/images/FRAME7.png",
-    title: "Security at the Core",
-    description:
-      "Every solution is designed to meet strict compliance and regulatory standards.",
-  },
-  {
-    img: "/assets/images/FRAME7.png",
-    title: "Holistic Approach",
-    description:
-      "From strategy and governance to execution and post-migration support.",
-  },
-];
+import { useEffect, useState } from "react";
 
 const rightFeatures = [
   {
@@ -42,11 +23,32 @@ const rightFeatures = [
 ];
 
 const WhyChooseUsSection = () => {
+  const [data, setData] = useState<{ left: string[]; right: string[] }>({
+    left: [],
+    right: []
+  });
+
+  const arrayDivider = (arr: string[]) => Math.ceil(arr.length / 2);
+  const splitArray = (arr: string[]) => {
+    const mid = arrayDivider(arr);
+    const left = arr.slice(0, mid);
+    const right = arr.slice(mid);
+    setData({left, right});
+  }  
+  
   const { data: whyChooseUs, isLoading } = useFetchData(
     "why-choose-uses?populate=*"
   );
 
-  console.log(whyChooseUs);
+  useEffect(() => {
+  if (!whyChooseUs?.data) {
+    return;
+  }
+  splitArray(whyChooseUs.data.map((item: any) => {console.log(item)} ));
+   
+  }, [whyChooseUs?.data?.title]);
+
+  console.log(data);
   return (
     <section className="bg-white py-12 md:py-16 lg:py-20" id="why-choose-us">
       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
@@ -78,7 +80,7 @@ const WhyChooseUsSection = () => {
                 </div>
               ) : (
                 <StaggerContainer className="flex-1 space-y-6 md:space-y-8 lg:pr-8">
-                  {whyChooseUs?.data?.map((feature: any) => (
+                  {data?.left.map((feature: any) => (
                     <StaggerItem key={feature.title} direction="up">
                       <div className="flex items-start space-x-4 bg-white rounded-2xl shadow-sm p-4 md:p-6">
                         <div className="flex-shrink-0">

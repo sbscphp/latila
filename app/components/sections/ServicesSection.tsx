@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useFetchData } from "@/app/hooks/useApis";
 
 type IService = {
   id: number;
@@ -49,7 +50,8 @@ const Service: React.FC<{
   );
 };
 
-const services: IService[] = [
+// Hardcoded services array
+const hardcodedServices: IService[] = [
   {
     id: 0,
     title: "Cloud Advisory & Migration",
@@ -87,9 +89,16 @@ const services: IService[] = [
 ];
 
 const ServicesSection = () => {
+  const { data: apiResponse, isLoading } = useFetchData("services?populate=*");
+
+  console.log(apiResponse, "services from API");
+
   const [activeId, setActiveId] = useState<number | null>(null);
   const handleToggle = (id: number) =>
     setActiveId((prev) => (prev === id ? null : id));
+
+  // Use hardcoded services for now since API returns empty data
+  const services = hardcodedServices;
 
   return (
     <section className="bg-gray-50 py-16 lg:py-20" id="services">
@@ -121,20 +130,22 @@ const ServicesSection = () => {
             </Link>
 
             {/* Third Service Card on the left – show ONLY here */}
-            <div className="mt-14">
+            {/* <div className="mt-14">
               <Service service={services[2]} />
-            </div>
+            </div> */}
           </div>
 
           {/* Right Content */}
           <div className="lg:col-span-8">
             {/* First Row (0 and 1) */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 items-start">
-              {services.map((service) =>
-                service.id === 2 ? null : (
-                  <Service service={service} key={service.id} />
-                )
-              )}
+              <div className="flex flex-col">
+                <img
+                  src={apiResponse?.data?.[0]?.image?.url || "N/A"}
+                  alt={apiResponse?.data?.[0]?.title || "Service"}
+                />
+                <p className="font-semibold text-3xl">{apiResponse?.data?.[0]?.title || "N/A" }</p>
+              </div>
             </div>
           </div>
         </div>

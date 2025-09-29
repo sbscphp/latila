@@ -3,7 +3,23 @@
 import FadeInLeft from "../animations/FadeInLeft";
 import FadeInRight from "../animations/FadeInRight";
 
-const DigitalTransformationSection = () => {
+interface AboutCard {
+  image?: {
+    url?: string;
+  };
+  name?: string;
+  position?: string;
+}
+
+interface DigitalTransformationSectionProps {
+  aboutCards: {
+    data?: AboutCard[];
+  };
+}
+
+const DigitalTransformationSection = ({ aboutCards }: DigitalTransformationSectionProps) => {
+
+  
   return (
     <section className="bg-white py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -50,11 +66,10 @@ const DigitalTransformationSection = () => {
                 <div className="text-center space-y-6">
                   {/* CEO Image */}
                   <div className="relative">
-                    <div className="w-80 h-80 rounded-2xl mx-auto overflow-hidden">
+                    <div className="w-80 h-50 rounded-2xl mx-auto overflow-hidden">
                       <img
-                        src="/assets/images/oladimeji.png"
-                        alt="Oladimeji Alao, CEO of Latila Consulting"
-                        className="w-full h-full object-cover"
+                        src={aboutCards?.data?.[0]?.image?.url || "N/A"}
+                        alt={aboutCards?.data?.[0]?.name || "CEO"}
                       />
                     </div>
                   </div>
@@ -62,10 +77,10 @@ const DigitalTransformationSection = () => {
                   {/* CEO Info */}
                   <div className="space-y-1">
                     <h3 className="text-2xl font-bold text-gray-900">
-                      Oladimeji Alao
+                      {aboutCards?.data?.[0]?.name || "N/A"}
                     </h3>
                     <p className="text-gray-600 text-lg">
-                      CEO, Latila Consulting
+                     {aboutCards?.data?.[0]?.position || "N/A"}
                     </p>
                   </div>
                 </div>
