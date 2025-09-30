@@ -33,7 +33,8 @@ const HeroSection = () => {
               style={{ color: "#1D2939" }}
             >
               Your Strategic Partner in{" "}
-              <span style={{ color: "#00447D" }}>Cloud &</span>
+              <span style={{ color: "#00447D" }}>Cloud </span>
+              <span style={{ color: "#1D2939" }}>&</span>
               <br />
               <span style={{ color: "#00447D" }}>IT Innovation</span>
             </h1>

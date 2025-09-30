@@ -16,7 +16,6 @@ export default function Home() {
       <main>
         <HeroSection />
         <AboutSection />
-
         <WhyChooseUsSection />
         <ServicesSection />
         {/* <BlogSection /> */}

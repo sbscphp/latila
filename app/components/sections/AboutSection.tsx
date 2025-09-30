@@ -35,12 +35,12 @@ const AboutSection = () => {
           {/* Right Content - Text */}
           <FadeInRight delay={0.4}>
             <div className="space-y-8">
-              <h3 className="text-3xl md:text-4xl font-semibold text-white leading-tight">
+              <h3 className="text-3xl md:text-5xl font-semibold text-white leading-tight">
                 About Latila Consulting
               </h3>
 
               {/* Description */}
-              <p className="text-lg text-white leading-relaxed opacity-90">
+              <p className="text-lg text-[#EAECF0] leading-relaxed opacity-90 -mt-8">
                 Latila Consulting is a growing IT project management consulting
                 firm committed to excellence. We take pride in our ability to
                 identify and eliminate business bottlenecks, streamline

@@ -27,7 +27,7 @@ const Footer = () => {
             <Link href="/#about">About Us</Link>
             <Link href="/#services">Services</Link>
             <Link href="/#why-choose-us">Why Choose Us</Link>
-            <Link href="/#blog">Blog</Link>
+            {/* <Link href="/#blog">Blog</Link> */}
           </nav>
 
           {/* Social Media Links */}

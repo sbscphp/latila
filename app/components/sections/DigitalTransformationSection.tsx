@@ -38,8 +38,7 @@ const DigitalTransformationSection = ({ aboutCards }: DigitalTransformationSecti
                 <span className="text-gray-900"> and</span>
                 <br />
                 <span className="text-cyan-400">scalable</span>
-                <span className="text-gray-900"> technology</span>
-                <span className="text-cyan-400">.</span>
+                <span className="text-gray-900"> technology.</span>
               </h1>
 
               {/* Description Text */}
