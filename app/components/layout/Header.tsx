@@ -3,18 +3,21 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-// import { usePathname } from "next/navigation";
+import { useFetchData } from "@/app/hooks/useApis";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // const pathname = usePathname();
+  
+    const { data: logo } = useFetchData("logo-lights");
+
+  console.log(logo?.data);
+
 
   const navigationLinks = [
     { href: "/", label: "Home" },
     { href: "/#about", label: "About Us" },
     { href: "/#services", label: "Services" },
     { href: "/#why-choose-us", label: "Why Choose Us" },
-    // { href: "/#blog", label: "Blog" },
   ];
 
   return (
@@ -29,8 +32,15 @@ const Header = () => {
                 style={{ width: "143px", height: "54px" }}
               >
                 <Image
-                  src="/assets/images/content.png"
-                  alt="Latila Consulting Logo"
+                  src={
+                    logo?.data?.attributes?.href?.data?.attributes?.url
+                      ? `${process.env.NEXT_PUBLIC_API}${logo.data.attributes.href.data.attributes.url}`
+                      : "/assets/images/content.png"
+                  }
+                  alt={
+                    logo?.data?.attributes?.label ||
+                    "Latila Consulting Logo"
+                  }
                   width={143}
                   height={54}
                 />
