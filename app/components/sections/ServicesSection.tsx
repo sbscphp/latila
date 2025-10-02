@@ -3,12 +3,21 @@
 import Link from "next/link";
 import { useFetchData } from "@/app/hooks/useApis";
 
+interface ServiceItem {
+  id: string;
+  title: string;
+  desc: string;
+  image: {
+    url: string;
+  };
+}
+
 const ServicesSection = () => {
   const { data: apiResponse, isLoading } = useFetchData("services?populate=*");
 
   console.log(apiResponse, "services from API");
 
-  const services = apiResponse?.data || [];
+  const services: ServiceItem[] = apiResponse?.data || [];
 
   // Loading skeleton component
   const ServiceSkeleton = () => (
@@ -19,7 +28,10 @@ const ServicesSection = () => {
   );
 
   return (
-    <section className="bg-gray-50 py-16 lg:py-20 overflow-x-hidden" id="services">
+    <section
+      className="bg-gray-50 py-16 lg:py-20 overflow-x-hidden"
+      id="services"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-x-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 overflow-x-hidden">
           {/* Left Content */}
@@ -85,7 +97,7 @@ const ServicesSection = () => {
                   <ServiceSkeleton />
                 </>
               ) : (
-                services.slice(0, 2).map((service: any) => (
+                services.slice(0, 2).map((service: ServiceItem) => (
                   <div
                     key={service.id}
                     className="bg-white rounded-2xl shadow-md p-4 flex flex-col space-y-4 min-w-0 card-component"
@@ -101,7 +113,7 @@ const ServicesSection = () => {
                       {service?.title || "N/A"}
                     </h3>
                     <p className="text-gray-600 text-sm desc">
-                      {service?.desc  || "N/A"}
+                      {service?.desc || "N/A"}
                     </p>
                   </div>
                 ))
@@ -116,7 +128,7 @@ const ServicesSection = () => {
                   <ServiceSkeleton />
                 </>
               ) : (
-                services.slice(3, 5).map((service: any) => (
+                services.slice(3, 5).map((service: ServiceItem) => (
                   <div
                     key={service.id}
                     className="bg-white rounded-2xl shadow-md p-4 flex flex-col space-y-4 min-w-0 card-component"
