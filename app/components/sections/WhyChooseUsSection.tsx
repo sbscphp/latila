@@ -107,23 +107,23 @@ const WhyChooseUsSection = () => {
 
               {/* Divider */}
               <div
-                className="hidden lg:block w-2 rounded-full mx-4"
+                className="hidden lg:block w-1.5 mx-2 rounded-full self-stretch"
                 style={{ backgroundColor: "#4EB2FF" }}
               ></div>
 
               {/* Horizontal divider on mobile */}
               <div
-                className="lg:hidden my-6 h-1 w-full rounded-full"
+                className="lg:hidden my-3 h-px w-full rounded-full"
                 style={{ backgroundColor: "#4EB2FF" }}
               ></div>
 
               {/* Right Features */}
               {isLoading ? (
-                <div className="flex-1 space-y-6 md:space-y-8 lg:pr-8">
+                <div className="flex-1 space-y-6 md:space-y-8 lg:pl-8">
                   <Skeleton height={150} width={300} borderRadius={10} />
                 </div>
               ) : (
-                <StaggerContainer className="flex-1 space-y-6 md:space-y-8 lg:pr-8">
+                <StaggerContainer className="flex-1 space-y-6 md:space-y-8 lg:pl-8">
                   {data?.right.map((feature) => (
                     <StaggerItem key={feature.title} direction="up">
                       <div className="flex items-start space-x-4 bg-white rounded-2xl shadow-sm p-4 md:p-6">
