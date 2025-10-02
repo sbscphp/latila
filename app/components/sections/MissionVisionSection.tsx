@@ -8,19 +8,25 @@ import StaggerContainer from "../animations/StaggerContainer";
 import { useFetchData } from "@/app/hooks/useApis";
 import StaggerItem from "../animations/StaggerItem";
 
+interface MissionVisionItem {
+  id: string;
+  title: string;
+  detail: string;
+  icon: {
+    url: string;
+  };
+}
+
 const MissionVisionSection = () => {
-
   const { data: missions, isLoading: isMissionsLoading } = useFetchData(
-        "missions?populate=*"
-      );
-    
-      console.log(missions, "missions");
+    "missions?populate=*"
+  );
 
-  const { data: visions, isLoading: isVisionsLoading } = useFetchData(
-        "visions?populate=*"
-      );
-    
-      console.log(visions, "visions");
+  console.log(missions, "missions");
+
+  const { data: visions } = useFetchData("visions?populate=*");
+
+  console.log(visions, "visions");
   return (
     <section className="bg-gray-50 py-16 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -46,7 +52,7 @@ const MissionVisionSection = () => {
               {/* Left Features */}
               {isMissionsLoading ? (
                 <div className="flex-1 space-y-6 md:space-y-8 lg:pr-8">
-                 <Skeleton height={150} width={300} borderRadius={10} />
+                  <Skeleton height={150} width={300} borderRadius={10} />
                   <div className="animate-pulse space-y-4">
                     <div className="h-40 bg-gray-300 rounded-2xl"></div>
                     <div className="h-40 bg-gray-300 rounded-2xl"></div>
@@ -55,7 +61,7 @@ const MissionVisionSection = () => {
               ) : (
                 <StaggerContainer className="space-y-8">
                   {/* Mission Card */}
-                  {missions?.data?.map((mission: any) => (
+                  {missions?.data?.map((mission: MissionVisionItem) => (
                     <StaggerItem direction="up" key={mission.id}>
                       <div className="relative">
                         <div className="bg-white rounded-2xl p-8 shadow-lg relative overflow-hidden max-w-md">
@@ -67,8 +73,11 @@ const MissionVisionSection = () => {
                           {/* Icon */}
                           <div className="mb-4">
                             <div className="w-12 h-12 rounded-full bg-blue-50 border-2 border-blue-200 flex items-center justify-center">
-                              <img 
-                                src={mission?.icon?.url || "/assets/images/default-icon.png"} 
+                              <img
+                                src={
+                                  mission?.icon?.url ||
+                                  "/assets/images/default-icon.png"
+                                }
                                 alt={mission?.title || "icon"}
                               />
                             </div>
