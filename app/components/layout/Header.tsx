@@ -7,11 +7,10 @@ import { useFetchData } from "@/app/hooks/useApis";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
-    const { data: logo } = useFetchData("logo-lights");
+
+  const { data: logo } = useFetchData("logo-lights");
 
   console.log(logo?.data);
-
 
   const navigationLinks = [
     { href: "/", label: "Home" },
@@ -35,11 +34,10 @@ const Header = () => {
                   src={
                     logo?.data?.attributes?.href?.data?.attributes?.url
                       ? `${process.env.NEXT_PUBLIC_API}${logo.data.attributes.href.data.attributes.url}`
-                      : "/assets/images/content.png"
+                      : "/assets/images/contact us.png"
                   }
                   alt={
-                    logo?.data?.attributes?.label ||
-                    "Latila Consulting Logo"
+                    logo?.data?.attributes?.label || "Latila Consulting Logo"
                   }
                   width={143}
                   height={54}
@@ -75,10 +73,11 @@ const Header = () => {
               style={{ backgroundColor: "#00447D", color: "white" }}
             >
               <span style={{ color: "white" }}>Contact Us</span>
-              <img
+              <Image
                 src="/assets/images/arrow.png"
-                alt=""
-                style={{ width: "16px", height: "16px" }}
+                alt="arrow icon"
+                width={16}
+                height={16}
               />
             </Link>
           </div>

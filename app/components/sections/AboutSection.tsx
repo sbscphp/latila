@@ -40,7 +40,7 @@ const AboutSection = () => {
               </h3>
 
               {/* Description */}
-              <p className="text-lg text-[#EAECF0] leading-relaxed opacity-90 -mt-8">
+              <p className="text-lg text-[#EAECF0] leading-relaxed opacity-90 -mt-">
                 Latila Consulting is a growing IT project management consulting
                 firm committed to excellence. We take pride in our ability to
                 identify and eliminate business bottlenecks, streamline

@@ -1,6 +1,7 @@
 "use client";
 
 import FadeInLeft from "../animations/FadeInLeft";
+import Image from "next/image";
 import FadeInRight from "../animations/FadeInRight";
 
 interface AboutCard {
@@ -66,7 +67,7 @@ const DigitalTransformationSection = ({ aboutCards }: DigitalTransformationSecti
                   {/* CEO Image */}
                   <div className="relative">
                     <div className="w-80 h-50 rounded-2xl mx-auto overflow-hidden">
-                      <img
+                      <Image
                         src={aboutCards?.data?.[0]?.image?.url || "N/A"}
                         alt={aboutCards?.data?.[0]?.name || "CEO"}
                       />
