@@ -126,21 +126,34 @@ const ContactSection = () => {
       toast.success(
         "Thank you! Your message has been sent successfully. We'll get back to you soon."
       );
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Contact form submission error:", error);
 
       // Handle different types of errors
       let errorMessage = "Failed to send message. Please try again.";
 
-      if (error?.response?.status === 400) {
-        errorMessage = "Please check your form data and try again.";
-      } else if (error?.response?.status === 500) {
-        errorMessage = "Server error. Please try again later.";
-      } else if (error?.response?.status >= 400) {
-        errorMessage = "Something went wrong. Please try again.";
-      } else if (error?.message?.includes("Network Error")) {
-        errorMessage =
-          "Network error. Please check your connection and try again.";
+      // Type guard to check if error has response property
+      if (error && typeof error === "object" && "response" in error) {
+        const axiosError = error as { response?: { status?: number } };
+        if (axiosError.response?.status === 400) {
+          errorMessage = "Please check your form data and try again.";
+        } else if (axiosError.response?.status === 500) {
+          errorMessage = "Server error. Please try again later.";
+        } else if (
+          axiosError.response?.status &&
+          axiosError.response.status >= 400
+        ) {
+          errorMessage = "Something went wrong. Please try again.";
+        }
+      }
+
+      // Check for network errors
+      if (error && typeof error === "object" && "message" in error) {
+        const errorWithMessage = error as { message?: string };
+        if (errorWithMessage.message?.includes("Network Error")) {
+          errorMessage =
+            "Network error. Please check your connection and try again.";
+        }
       }
 
       toast.error(errorMessage);
