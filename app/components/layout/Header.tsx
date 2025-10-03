@@ -34,7 +34,7 @@ const Header = () => {
                   src={
                     logo?.data?.attributes?.href?.data?.attributes?.url
                       ? `${process.env.NEXT_PUBLIC_API}${logo.data.attributes.href.data.attributes.url}`
-                      : "/assets/images/contact us.png"
+                      : "/assets/images/contact.png"
                   }
                   alt={
                     logo?.data?.attributes?.label || "Latila Consulting Logo"
