@@ -1,7 +1,6 @@
 import axios from "axios";
 
-export const baseUrl =
-  "https://deserving-passion-2c6c2f79bf.strapiapp.com/api/";
+export const baseUrl = "http://localhost:1337/api/";
 
 const axiosInstance = axios.create({
   baseURL: baseUrl,
