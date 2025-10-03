@@ -15,6 +15,7 @@ const Header = () => {
   useEffect(() => {
     setIsMounted(true);
   }, []);
+  console.log(logo?.data);
 
   const navigationLinks = [
     { href: "/", label: "Home" },
@@ -60,11 +61,6 @@ const Header = () => {
                 key={link.href}
                 href={link.href}
                 scroll={true}
-                // className={`${
-                //   pathname === link.href.split("#")[0] // highlight Home page
-                //     ? "text-blue-600 font-semibold"
-                //     : "text-gray-700 hover:font-medium"
-                // }`}
               >
                 {link.label}
               </Link>
@@ -80,10 +76,11 @@ const Header = () => {
               style={{ backgroundColor: "#00447D", color: "white" }}
             >
               <span style={{ color: "white" }}>Contact Us</span>
-              <img
+              <Image
                 src="/assets/images/arrow.png"
-                alt=""
-                style={{ width: "16px", height: "16px" }}
+                alt="arrow icon"
+                width={16}
+                height={16}
               />
             </Link>
           </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import FadeInLeft from "../animations/FadeInLeft";
+import Image from "next/image";
 import FadeInRight from "../animations/FadeInRight";
 
 interface AboutCard {
@@ -18,8 +19,8 @@ interface DigitalTransformationSectionProps {
 }
 
 const DigitalTransformationSection = ({ aboutCards }: DigitalTransformationSectionProps) => {
+  const imageUrl = aboutCards?.data?.[0]?.image?.url || "/placeholder.png";
 
-  
   return (
     <section className="bg-white py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -61,16 +62,17 @@ const DigitalTransformationSection = ({ aboutCards }: DigitalTransformationSecti
           {/* Right Content - CEO Profile */}
           <FadeInRight delay={0.4}>
             <div className="flex justify-center lg:justify-end">
-              <div className=" rounded-3xl p-8 max-w-md w-full">
+              <div className="rounded-3xl p-8 max-w-md w-full">
                 <div className="text-center space-y-6">
                   {/* CEO Image */}
-                  <div className="relative">
-                    <div className="w-80 h-50 rounded-2xl mx-auto overflow-hidden">
-                      <img
-                        src={aboutCards?.data?.[0]?.image?.url || "N/A"}
-                        alt={aboutCards?.data?.[0]?.name || "CEO"}
-                      />
-                    </div>
+                  <div className="relative w-80 h-80 mx-auto rounded-2xl overflow-hidden">
+                    <Image
+                      src={imageUrl}
+                      alt={aboutCards?.data?.[0]?.name || "CEO"}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 320px"
+                    />
                   </div>
 
                   {/* CEO Info */}
@@ -79,7 +81,7 @@ const DigitalTransformationSection = ({ aboutCards }: DigitalTransformationSecti
                       {aboutCards?.data?.[0]?.name || "N/A"}
                     </h3>
                     <p className="text-gray-600 text-lg">
-                     {aboutCards?.data?.[0]?.position || "N/A"}
+                      {aboutCards?.data?.[0]?.position || "N/A"}
                     </p>
                   </div>
                 </div>

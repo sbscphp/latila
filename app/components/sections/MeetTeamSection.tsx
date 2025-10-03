@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 const MeetTheTeamSection = () => {
   const teamMembers = [
     {
@@ -89,7 +90,7 @@ const MeetTheTeamSection = () => {
             <div className="mt-8">
               <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                 <div className="h-40">
-                  <img
+                  <Image
                     src={teamMembers[2].image}
                     alt={teamMembers[2].name}
                     className="w-full h-full object-cover"
@@ -120,7 +121,7 @@ const MeetTheTeamSection = () => {
                     <div className="absolute top-2 right-2 text-white text-xs px-2 py-1 rounded"></div>
                   )}
                   <div className="h-48">
-                    <img
+                    <Image
                       src={member.image}
                       alt={member.name}
                       className="w-full h-full object-cover"
@@ -144,7 +145,7 @@ const MeetTheTeamSection = () => {
                   className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
                 >
                   <div className="h-40">
-                    <img
+                    <Image
                       src={member.image}
                       alt={member.name}
                       className="w-full h-full object-cover"

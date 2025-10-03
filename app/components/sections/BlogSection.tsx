@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 const BlogSection = () => {
   const blogPosts = [
     {
@@ -11,7 +13,7 @@ const BlogSection = () => {
       date: "Aug 10, 2025",
       image: (
         <div className="w-full h-48 rounded-t-xl overflow-hidden">
-          <img
+          <Image
             src="/assets/images/Photos.png"
             alt="Blog post about productivity"
             className="w-full h-full object-cover"
@@ -28,7 +30,7 @@ const BlogSection = () => {
       date: "Aug 10, 2025",
       image: (
         <div className="w-full h-48 rounded-t-xl overflow-hidden">
-          <img
+          <Image
             src="/assets/images/photos.png"
             alt="Blog post about productivity"
             className="w-full h-full object-cover"
@@ -45,7 +47,7 @@ const BlogSection = () => {
       date: "Aug 10, 2025",
       image: (
         <div className="w-full h-48 rounded-t-xl overflow-hidden">
-          <img
+          <Image
             src="/assets/images/Photos.png"
             alt="Blog post about productivity"
             className="w-full h-full object-cover"
