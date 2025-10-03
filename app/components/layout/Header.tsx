@@ -61,11 +61,6 @@ const Header = () => {
                 key={link.href}
                 href={link.href}
                 scroll={true}
-                // className={`${
-                //   pathname === link.href.split("#")[0] // highlight Home page
-                //     ? "text-blue-600 font-semibold"
-                //     : "text-gray-700 hover:font-medium"
-                // }`}
               >
                 {link.label}
               </Link>

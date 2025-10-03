@@ -66,6 +66,7 @@ const WhyChooseUsSection = () => {
                 businesses.
               </p>
             </div>
+            
           </FadeInLeft>
 
           {/* Right Column */}

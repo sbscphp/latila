@@ -48,7 +48,7 @@ const ServicesSection = () => {
               </p>
 
               <Link
-                href="/contact"
+                href="/#contact"
                 className="inline-flex items-center text-white px-6 py-3 rounded-full font-medium transition-all hover:shadow-lg"
                 style={{ backgroundColor: "#00447D" }}
               >
