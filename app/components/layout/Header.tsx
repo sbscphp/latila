@@ -2,14 +2,19 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useFetchData } from "@/app/hooks/useApis";
+import Skeleton from "react-loading-skeleton";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
-  const { data: logo } = useFetchData("logo-lights");
+  const { data: logo, isPending } = useFetchData("logo-lights?populate=*");
 
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
   console.log(logo?.data);
 
   const navigationLinks = [
@@ -30,18 +35,21 @@ const Header = () => {
                 className="rounded-lg flex items-center justify-center bg-white"
                 style={{ width: "143px", height: "54px" }}
               >
-                <Image
-                  src={
-                    logo?.data?.attributes?.href?.data?.attributes?.url
-                      ? `${process.env.NEXT_PUBLIC_API}${logo.data.attributes.href.data.attributes.url}`
-                      : "/assets/images/contact.png"
-                  }
-                  alt={
-                    logo?.data?.attributes?.label || "Latila Consulting Logo"
-                  }
-                  width={143}
-                  height={54}
-                />
+                {!isMounted || isPending ? (
+                  <Skeleton height={54} width={143} />
+                ) : (
+                  logo?.data?.[0]?.href?.[0]?.url && (
+                    <Image
+                      src={logo?.data?.[0]?.href?.[0]?.url}
+                      alt={
+                        logo?.data?.[0]?.href?.[0]?.alt ||
+                        "Latila Consulting Logo"
+                      }
+                      width={143}
+                      height={54}
+                    />
+                  )
+                )}
               </div>
             </div>
           </div>
