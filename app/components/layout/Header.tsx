@@ -3,29 +3,68 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { useFetchData } from "@/app/hooks/useApis";
 import Skeleton from "react-loading-skeleton";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+  const pathname = usePathname();
 
   const { data: logo, isPending } = useFetchData("logo-lights?populate=*");
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
-  console.log(logo?.data);
 
-  const navigationLinks = [
-    { href: "/", label: "Home" },
-    { href: "/#about", label: "About Us" },
-    { href: "/#services", label: "Services" },
-    { href: "/#why-choose-us", label: "Why Choose Us" },
+  useEffect(() => {
+    if (pathname === "/") {
+      setActiveSection("home");
+    }
+
+    const sections = ["home", "about", "services", "why-choose-us", "contact"];
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.5, rootMargin: "-100px 0px -40% 0px" }
+    );
+
+    sections.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, [pathname]);
+
+    const navigationLinks = [
+    { href: "/", label: "Home", section: "home" },
+    { href: "/#about", label: "About Us", section: "about" },
+    { href: "/#services", label: "Services", section: "services" },
+    { href: "/#why-choose-us", label: "Why Choose Us", section: "why-choose-us" },
   ];
 
+const isLinkActive = (section: string) => {
+  // Force only About Us active on /about page
+  if (pathname === "/about") {
+    return section === "about";
+  }
+
+  // Default: use scrolling section
+  return activeSection === section;
+};
+
+
   return (
-    <header className="bg-white shadow-sm">
+    <header className="bg-white shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
@@ -41,10 +80,7 @@ const Header = () => {
                   logo?.data?.[0]?.href?.[0]?.url && (
                     <Image
                       src={logo?.data?.[0]?.href?.[0]?.url}
-                      alt={
-                        logo?.data?.[0]?.href?.[0]?.alt ||
-                        "Latila Consulting Logo"
-                      }
+                      alt={logo?.data?.[0]?.href?.[0]?.alt || "Latila Consulting Logo"}
                       width={143}
                       height={54}
                     />
@@ -61,6 +97,11 @@ const Header = () => {
                 key={link.href}
                 href={link.href}
                 scroll={true}
+                className={`transition-all duration-200 hover:text-[#00447D] ${
+                  isLinkActive(link.section)
+                    ? "text-[#00447D] font-semibold"
+                    : "text-gray-700"
+                }`}
               >
                 {link.label}
               </Link>
@@ -117,12 +158,12 @@ const Header = () => {
                   key={link.href}
                   href={link.href}
                   scroll={true}
-                  onClick={() => setIsMenuOpen(false)} // close menu after click
-                  // className={`${
-                  //   pathname === link.href.split("#")[0]
-                  //     ? "text-blue-600 font-semibold"
-                  //     : "text-gray-700 hover:font-medium"
-                  // }`}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={`px-4 py-2 rounded-lg transition-all duration-200 ${
+                    isLinkActive(link.section)
+                      ? "bg-[#00447D] text-white"
+                      : "text-gray-700"
+                  }`}
                 >
                   {link.label}
                 </Link>
