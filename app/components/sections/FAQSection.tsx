@@ -30,7 +30,7 @@ const FAQSection = () => {
             <div>
               <div className="space-y-6">
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900 leading-tight">
-                  Frequently Asked questions
+                  Frequently Asked Questions
                 </h2>
 
                 <p className="text-gray-600 leading-relaxed">
