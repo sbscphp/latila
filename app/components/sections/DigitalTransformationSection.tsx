@@ -1,5 +1,4 @@
 "use client";
-
 import FadeInLeft from "../animations/FadeInLeft";
 import Image from "next/image";
 import FadeInRight from "../animations/FadeInRight";
@@ -62,27 +61,18 @@ const DigitalTransformationSection = ({ aboutCards }: DigitalTransformationSecti
           {/* Right Content - CEO Profile */}
           <FadeInRight delay={0.4}>
             <div className="flex justify-center lg:justify-end">
-              <div className="rounded-3xl p-8 max-w-md w-full">
-                <div className="text-center space-y-6">
+              <div className=" rounded-3xl p-16 lg:p-20 max-w-lg w-full">
+                <div className="text-center">
                   {/* CEO Image */}
-                  <div className="relative w-80 h-80 mx-auto rounded-2xl overflow-hidden">
+                  <div className="relative w-full h-80 mx-auto rounded-2xl overflow-hidden">
                     <Image
                       src={imageUrl}
                       alt={aboutCards?.data?.[0]?.name || "CEO"}
                       fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 320px"
+                      className="object-contain"
+                      sizes="(max-width: 800px) 100vw, 320px"
+                      priority
                     />
-                  </div>
-
-                  {/* CEO Info */}
-                  <div className="space-y-1">
-                    <h3 className="text-2xl font-bold text-gray-900">
-                      {aboutCards?.data?.[0]?.name || "N/A"}
-                    </h3>
-                    <p className="text-gray-600 text-lg">
-                      {aboutCards?.data?.[0]?.position || "N/A"}
-                    </p>
                   </div>
                 </div>
               </div>

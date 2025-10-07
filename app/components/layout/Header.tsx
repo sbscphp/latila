@@ -19,49 +19,49 @@ const Header = () => {
     setIsMounted(true);
   }, []);
 
+  // Set active section based on pathname and hash
   useEffect(() => {
-    if (pathname === "/") {
-      setActiveSection("home");
+    if (pathname === "/about") {
+      setActiveSection("about");
+      return;
     }
 
-    const sections = ["home", "about", "services", "why-choose-us", "contact"];
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.5, rootMargin: "-100px 0px -40% 0px" }
-    );
-
-    sections.forEach((id) => {
-      const element = document.getElementById(id);
-      if (element) observer.observe(element);
-    });
-
-    return () => observer.disconnect();
+    if (pathname === "/") {
+      const hash = window.location.hash.replace("#", "");
+      if (hash) {
+        setActiveSection(hash);
+      } else {
+        setActiveSection("home");
+      }
+    }
   }, [pathname]);
 
-    const navigationLinks = [
+  // Handle hash changes (when clicking anchor links)
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace("#", "");
+      setActiveSection(hash || "home");
+    };
+
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
+  const navigationLinks = [
     { href: "/", label: "Home", section: "home" },
     { href: "/#about", label: "About Us", section: "about" },
     { href: "/#services", label: "Services", section: "services" },
     { href: "/#why-choose-us", label: "Why Choose Us", section: "why-choose-us" },
   ];
 
-const isLinkActive = (section: string) => {
-  // Force only About Us active on /about page
-  if (pathname === "/about") {
-    return section === "about";
-  }
+  const isLinkActive = (section: string) => {
+    return activeSection === section;
+  };
 
-  // Default: use scrolling section
-  return activeSection === section;
-};
-
+  const handleLinkClick = (section: string) => {
+    setActiveSection(section);
+    setIsMenuOpen(false);
+  };
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
@@ -97,6 +97,7 @@ const isLinkActive = (section: string) => {
                 key={link.href}
                 href={link.href}
                 scroll={true}
+                onClick={() => handleLinkClick(link.section)}
                 className={`transition-all duration-200 hover:text-[#00447D] ${
                   isLinkActive(link.section)
                     ? "text-[#00447D] font-semibold"
@@ -113,6 +114,7 @@ const isLinkActive = (section: string) => {
             <Link
               href="/#contact"
               scroll={true}
+              onClick={() => handleLinkClick("contact")}
               className="px-6 py-2 rounded-full transition-all duration-200 flex items-center space-x-2"
               style={{ backgroundColor: "#00447D", color: "white" }}
             >
@@ -158,7 +160,7 @@ const isLinkActive = (section: string) => {
                   key={link.href}
                   href={link.href}
                   scroll={true}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={() => handleLinkClick(link.section)}
                   className={`px-4 py-2 rounded-lg transition-all duration-200 ${
                     isLinkActive(link.section)
                       ? "bg-[#00447D] text-white"
@@ -171,6 +173,7 @@ const isLinkActive = (section: string) => {
               <Link
                 href="/#contact"
                 scroll={true}
+                onClick={() => handleLinkClick("contact")}
                 className="px-6 py-2 rounded-lg transition-all duration-200 flex items-center space-x-2 w-fit"
                 style={{ backgroundColor: "#00447D", color: "white" }}
               >

@@ -172,7 +172,7 @@ const ContactSection = () => {
             <FadeInLeft delay={0.2}>
               <div className="rounded-2xl overflow-hidden h-full">
                 <Image
-                  src="/assets/images/contact us.png"
+                  src="/assets/images/Contactus.png"
                   alt="Professional support team at Latila Consulting"
                   className="w-full h-full object-cover"
                   width={500}
