@@ -12,18 +12,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      # 🧠 Setup Bun instead of Node
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
         with:
-          node-version: '20'
-          cache: 'npm'                # requires package-lock.json
+          bun-version: latest
 
-      - name: Install deps
-        run: npm ci
+      - name: Install dependencies
+        run: bun install
 
-      - name: Build
+      - name: Build Next.js app
         run: |
-          npm run build
-          npx next export             # creates ./out
+          bun run build
+          bunx next export    # Creates the /out folder
 
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -34,4 +35,3 @@ jobs:
           server-dir: ${{ secrets.REMOTE_DIR || 'public_html' }}
           local-dir: out
           protocol: ftps
-          state-name: .ftp-deploy-sync-state.json
