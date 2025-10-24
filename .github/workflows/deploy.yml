@@ -9,32 +9,21 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: read   # for checkout
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Use Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
+          cache: 'npm'                # requires package-lock.json
 
       - name: Install deps
         run: npm ci
 
-      - name: Build Next.js
+      - name: Build
         run: |
           npm run build
-          npx next export   # creates ./out
-
-      - name: Upload artifact (optional)
-        uses: actions/upload-artifact@v4
-        with:
-          name: site-out
-          path: out
+          npx next export             # creates ./out
 
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -46,4 +35,3 @@ jobs:
           local-dir: out
           protocol: ftps
           state-name: .ftp-deploy-sync-state.json
-          # dangerous-clean-slate: true   # uncomment to wipe server dir before upload (use with caution)
