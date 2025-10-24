@@ -2,15 +2,18 @@ name: Deploy static Next.js to GoDaddy via FTP
 
 on:
   push:
-    branches: [ main ]      # deploy when you push to main
-  workflow_dispatch:         # allow manual “Run workflow” from GitHub UI
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: read   # for checkout
+
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Use Node
@@ -19,26 +22,22 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
-      - name: Install dependencies
+      - name: Install deps
         run: npm ci
 
-      # If you need static export, set this in next.config.js:  output: 'export'
-      - name: Build
-        run: npm run build
+      - name: Build Next.js
+        run: |
+          npm run build
+          npx next export   # creates ./out
 
-      - name: Export static site
-        run: npx next export
-        # This creates the "out" folder containing HTML, CSS, JS
-
-      # Optional: keep a copy of the build as an artifact (for debugging/rollback)
-      - name: Upload build artifact
+      - name: Upload artifact (optional)
         uses: actions/upload-artifact@v4
         with:
           name: site-out
           path: out
 
       - name: Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
@@ -46,6 +45,5 @@ jobs:
           server-dir: ${{ secrets.REMOTE_DIR || 'public_html' }}
           local-dir: out
           protocol: ftps
-          # Options:
-          # dangerous-clean-slate: true   # uncomment to delete everything on server dir before upload
-          state-name: .ftp-deploy-sync-state.json  # tracks changed files
+          state-name: .ftp-deploy-sync-state.json
+          # dangerous-clean-slate: true   # uncomment to wipe server dir before upload (use with caution)
