@@ -1,0 +1,51 @@
+name: Deploy static Next.js to GoDaddy via FTP
+
+on:
+  push:
+    branches: [ main ]      # deploy when you push to main
+  workflow_dispatch:         # allow manual “Run workflow” from GitHub UI
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Use Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      # If you need static export, set this in next.config.js:  output: 'export'
+      - name: Build
+        run: npm run build
+
+      - name: Export static site
+        run: npx next export
+        # This creates the "out" folder containing HTML, CSS, JS
+
+      # Optional: keep a copy of the build as an artifact (for debugging/rollback)
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-out
+          path: out
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.REMOTE_DIR || 'public_html' }}
+          local-dir: out
+          protocol: ftps
+          # Options:
+          # dangerous-clean-slate: true   # uncomment to delete everything on server dir before upload
+          state-name: .ftp-deploy-sync-state.json  # tracks changed files
