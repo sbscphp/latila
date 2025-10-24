@@ -165,7 +165,6 @@ const ContactSection = () => {
   return (
     <section className="bg-white pt-16 lg:pt-24 pb-0" id="contact">
       <div className="w-full">
-        {/* Content area with light blue background */}
         <div className="p-8" style={{ backgroundColor: "#E6F2FF" }}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
             {/* Left Content - Image */}
