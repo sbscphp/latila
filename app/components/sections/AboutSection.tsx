@@ -68,7 +68,7 @@ const AboutSection = () => {
                   <img
                     src="/assets/images/arrow-up-right.png"
                     alt=""
-                    style={{ width: "16px", height: "16px", marginLeft: "8px" }}
+                    style={{ width: "16px", height: "16px", marginLeft: "7px" }}
                   />
                 </Link>
               </div>

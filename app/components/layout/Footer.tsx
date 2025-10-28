@@ -9,17 +9,21 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo Section */}
-          <div
-            className=" rounded-lg flex items-center justify-center text-white"
-            style={{ width: "143px", height: "54px" }}
-          >
-            <Image
-              src="/assets/images/LATILA LOGO.png"
-              alt="Latila Consulting Logo"
-              width={143}
-              height={54}
-            />
-          </div>
+          <div className="flex flex-col items-center text-white space-y-3">
+  <div className="text-left">
+    <Image
+      src="/assets/images/LATILA LOGO.png"
+      alt="Latila Consulting Logo"
+      width={180}
+      height={80}
+    />
+    <p className="text-[#98A2B3] text-base leading-relaxed">
+      LATILA Consulting is a subsidiary of <br />
+      Latila Ventures Limited.
+    </p>
+  </div>
+</div>
+
 
           {/* Navigation Links */}
           <nav className="hidden md:flex items-center space-x-8">
