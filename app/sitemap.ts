@@ -1,7 +1,10 @@
 import { MetadataRoute } from 'next';
 import { routes } from './utils/routes';
 
-const baseUrl = "https://latila.org"
+export const dynamic = 'force-static'; // ✅ Required for static export
+export const revalidate = false; // ✅ Optional, ensures no ISR issues
+
+const baseUrl = 'https://latila.org';
 
 type RouteObject = {
   [key: string]: string | (() => string) | RouteObject;
@@ -28,6 +31,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return routeUrls.map((url) => ({
     url: `${baseUrl}${url}`,
     lastModified: new Date(),
-    priority: 1, 
-  }));
+    priority: 1,
+  }));
 }
