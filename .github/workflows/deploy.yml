@@ -24,7 +24,7 @@ jobs:
       - name: Build Next.js app
         run: |
           bun run build
-          bunx next export    # Creates the /out folder
+         
 
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4

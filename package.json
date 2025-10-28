@@ -2,12 +2,12 @@
   "name": "latila",
   "version": "0.1.0",
   "private": true,
- "scripts": {
-  "dev": "bun run next dev --turbopack",
-  "build": "bun run next build",
-  "start": "bun run next start",
-  "lint": "bun run eslint"
-},
+  "scripts": {
+    "dev": "bun run next dev --turbopack",
+    "build": "bun run next build --turbopack",
+    "start": "bun run next start",
+    "lint": "bun run eslint"
+  },
   "dependencies": {
     "@tanstack/react-query": "^5.90.2",
     "axios": "^1.12.2",
