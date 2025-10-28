@@ -9,6 +9,16 @@ import DigitalTransformationSection from "../components/sections/DigitalTransfor
 import ContactSection from "../components/sections/ContactSection";
 import { useFetchData } from "@/app/hooks/useApis";
 import Skeleton from "react-loading-skeleton";
+// import { Metadata } from "next";
+
+// export function generateMetadata(): Metadata {
+//   return {
+//   title: "LATILA",
+//   description: "Latila is a growing IT project management consulting firm committed to excellence.",
+//   icons: "/Favicon.png",
+//   };
+   
+// };
 
 const Page = () => {
   const { data: aboutCards, isLoading } = useFetchData(
