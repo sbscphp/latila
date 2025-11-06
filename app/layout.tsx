@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "sonner/dist/styles.css";
 import "react-loading-skeleton/dist/skeleton.css";
+import "react-phone-input-2/lib/style.css";
 import ProviderWrapper from "./components/layout/ProviderWrapper";
 
 const geistSans = Geist({
@@ -17,9 +18,9 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "LATILA",
-  description: "Latila is a growing IT project management consulting firm committed to excellence.",
+  description:
+    "Latila is a growing IT project management consulting firm committed to excellence.",
   icons: "/Favicon.png",
-   
 };
 
 export default function RootLayout({

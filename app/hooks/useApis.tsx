@@ -1,11 +1,18 @@
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { axiosInstance, baseUrl } from "../utils/axios-instance";
 
+const contactUsApiUrl =
+  process.env.NEXT_PUBLIC_CONTACT_US_API_URL ||
+  "https://latila.sbscuk.co.uk/public/api/contact-us";
+
 // Create Data
-export const usePostData = (url: string) => {
+export const usePostData = (url: string, isContactUrl: boolean = false) => {
   const mutation = useMutation({
     mutationFn: async (arg: Record<string, unknown>) => {
-      const response = await axiosInstance.post(baseUrl + url, arg);
+      const response = await axiosInstance.post(
+        isContactUrl ? contactUsApiUrl : baseUrl + url,
+        arg
+      );
       return response.data;
     },
   });

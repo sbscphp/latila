@@ -4,7 +4,8 @@ import { routes } from './utils/routes';
 export const dynamic = 'force-static'; // ✅ Required for static export
 export const revalidate = false; // ✅ Optional, ensures no ISR issues
 
-const baseUrl = 'https://latila.org';
+const baseUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || 'https://latila.org';
 
 type RouteObject = {
   [key: string]: string | (() => string) | RouteObject;

@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const baseUrl =
+  process.env.NEXT_PUBLIC_STRAPI_API_URL ||
   "https://deserving-passion-2c6c2f79bf.strapiapp.com/api/";
 
 const axiosInstance = axios.create({

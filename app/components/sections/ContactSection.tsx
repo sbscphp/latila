@@ -6,9 +6,12 @@ import FadeInRight from "../animations/FadeInRight";
 import Image from "next/image";
 import { usePostData } from "@/app/hooks/useApis";
 import { toast } from "sonner";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 const ContactSection = () => {
   const contactMutatation = usePostData("contacts");
+  const contactUsMutatation = usePostData("contact-us", true);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -40,8 +43,9 @@ const ContactSection = () => {
 
   const validatePhone = (phone: string) => {
     if (phone.trim()) {
-      // phone number should between 10 and 15 digits
-      if (phone.trim().length < 10 || phone.trim().length > 15) {
+      // Phone input includes country code, so minimum should be country code + number
+      // Typically: country code (1-3 digits) + phone number (7-15 digits)
+      if (phone.trim().length < 8 || phone.trim().length > 18) {
         return "Please enter a valid phone number";
       }
     }
@@ -86,6 +90,21 @@ const ContactSection = () => {
     }
   };
 
+  const handlePhoneChange = (value: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      phone: value,
+    }));
+
+    // Clear error when user starts typing
+    if (errors.phone) {
+      setErrors((prev) => ({
+        ...prev,
+        phone: "",
+      }));
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -106,9 +125,16 @@ const ContactSection = () => {
       },
     };
 
+    const contactUsPayload = {
+      name: formData.name,
+      email: formData.email,
+      phone_number: formData.phone,
+      message: formData.message,
+    };
+
     try {
       await contactMutatation.mutateAsync(payload);
-
+      await contactUsMutatation.mutateAsync(contactUsPayload);
       // Reset form and errors on success
       setFormData({
         name: "",
@@ -163,9 +189,9 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="bg-white pt-16 lg:pt-24 pb-0" id="contact">
+    <section className="bg-white  pb-0" id="contact">
       <div className="w-full">
-        <div className="p-8" style={{ backgroundColor: "#E6F2FF" }}>
+        <div className="p-8 lg:py-16" style={{ backgroundColor: "#E6F2FF" }}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
             {/* Left Content - Image */}
             <FadeInLeft delay={0.2}>
@@ -173,7 +199,7 @@ const ContactSection = () => {
                 <Image
                   src="/assets/images/Picture for website design.png"
                   alt="Professional support team at Latila Consulting"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover max-h-[600px]"
                   width={500}
                   height={500}
                 />
@@ -182,7 +208,7 @@ const ContactSection = () => {
 
             {/* Right Content - Contact Form */}
             <FadeInRight delay={0.4}>
-              <div className="bg-white rounded-2xl p-8 shadow-sm h-full flex flex-col justify-between">
+              <div className="bg-white rounded-2xl p-8 shadow-sm h-full flex flex-col justify-between ">
                 <div className="mb-8">
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">
                     Contact Us
@@ -246,19 +272,24 @@ const ContactSection = () => {
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         Phone Number
                       </label>
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        placeholder="Enter your phone number"
-                        className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-sm transition-colors ${
+                      <div
+                        className={`phone-input-wrapper ${
                           errors.phone
-                            ? "border-red-300 focus:ring-red-500 bg-red-50"
-                            : "border-gray-200 focus:ring-blue-500"
-                        }`}
-                        disabled={isSubmitting}
-                      />
+                            ? "border-red-300 focus-within:ring-red-500 bg-red-50"
+                            : "border-gray-200 focus-within:ring-blue-500"
+                        } border rounded-lg focus-within:ring-2 focus-within:outline-none transition-colors`}
+                      >
+                        <PhoneInput
+                          country={"ng"}
+                          value={formData.phone}
+                          onChange={handlePhoneChange}
+                          disabled={isSubmitting}
+                          placeholder="+234 (234) 567-890"
+                          inputClass="form-control"
+                          buttonClass="flag-dropdown"
+                          containerClass="react-tel-input"
+                        />
+                      </div>
                       {errors.phone && (
                         <p className="mt-1 text-sm text-red-600">
                           {errors.phone}
