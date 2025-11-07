@@ -92,6 +92,19 @@ const HeroSection = () => {
                 style={{ width: "16px", height: "16px" }}
               />
             </Link>
+
+            <p className="text-lg mt-4 text-[#344054] leading-relaxed font-mono">
+              <span className="text-red-500">*</span> Get a free technical
+              assessment of your company. Click{" "}
+              <a
+                href="https://makeicheck.base44.app"
+                target="_blank"
+                className="text-[#00447D]"
+              >
+                here{" "}
+              </a>
+              to begin.
+            </p>
           </div>
 
           {/* Right Column - Rotating Hero Images */}

@@ -21,6 +21,8 @@ const Header = () => {
 
   // Set active section based on pathname and hash
   useEffect(() => {
+    if (!isMounted) return;
+    
     if (pathname === "/about") {
       setActiveSection("about");
       return;
@@ -34,7 +36,7 @@ const Header = () => {
         setActiveSection("home");
       }
     }
-  }, [pathname]);
+  }, [pathname, isMounted]);
 
   // Handle hash changes (when clicking anchor links)
   useEffect(() => {
