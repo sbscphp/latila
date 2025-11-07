@@ -24,9 +24,9 @@ const HeroSection = () => {
   return (
     <section className="bg-white py-16 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left Column - Content */}
-          <div>
+        <div className="grid lg:grid-cols-3 gap-12 lg:gap-16 items-center">
+          {/* Left Column - Content, should take 2/3 of the width */}
+          <div className="lg:col-span-2">
             {/* Main Headline */}
             <h1
               className="text-4xl md:text-5xl lg:text-6xl font-semibold mb-6 leading-tight"
@@ -107,8 +107,8 @@ const HeroSection = () => {
             </p>
           </div>
 
-          {/* Right Column - Rotating Hero Images */}
-          <div className="flex justify-center lg:justify-end">
+          {/* Right Column - Rotating Hero Images, should take 1/3 of the width */}
+          <div className="flex justify-center lg:justify-end lg:col-span-1">
             <div className="relative">
               {/* Main rotating image */}
               <img
