@@ -51,60 +51,72 @@ const HeroSection = () => {
             </p>
 
             {/* CTA Button */}
-            <Link
-              href="/#contact"
-              scroll={true}
-              className="inline-flex px-6 py-2 rounded-full transition-all duration-200 items-center space-x-2 w-fit"
-              style={{ backgroundColor: "#00447D", color: "white" }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#60A5FA";
-                const span = e.currentTarget.querySelector(
-                  "span"
-                ) as HTMLElement;
-                if (span) span.style.color = "#1e3a8a";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "#00447D";
-                const span = e.currentTarget.querySelector(
-                  "span"
-                ) as HTMLElement;
-                if (span) span.style.color = "white";
-              }}
-              onMouseDown={(e) => {
-                e.currentTarget.style.backgroundColor = "#93C5FD";
-                const span = e.currentTarget.querySelector(
-                  "span"
-                ) as HTMLElement;
-                if (span) span.style.color = "#1e3a8a";
-              }}
-              onMouseUp={(e) => {
-                e.currentTarget.style.backgroundColor = "#60A5FA";
-                const span = e.currentTarget.querySelector(
-                  "span"
-                ) as HTMLElement;
-                if (span) span.style.color = "#1e3a8a";
-              }}
-            >
-              <span style={{ color: "white" }}>Contact Us</span>
-              <img
-                src="/assets/images/arrow.png"
-                alt=""
-                style={{ width: "16px", height: "16px" }}
-              />
-            </Link>
-
-            <p className="text-lg mt-4 text-[#344054] leading-relaxed font-mono">
-              <span className="text-red-500">*</span> Get a free technical
-              assessment of your company. Click{" "}
-              <a
+            <div className="flex items-center gap-4 mb-4">
+              {/* Free Technical Assessment Button */}
+              <Link
                 href="https://makeicheck.base44.app"
                 target="_blank"
-                className="text-[#00447D]"
+                className="inline-flex px-6 py-2 rounded-full transition-all duration-200 items-center justify-center w-fit font-semibold"
+                style={{ backgroundColor: "#A1EBFF", color: "#00447D"}}
+                
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = "#A1EBFF";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "#A1EBFF";
+                }}
               >
-                here{" "}
-              </a>
-              to begin.
-            </p>
+                Free Technical Assessment
+                 <img
+                  src="/assets/images/arrow.png"
+                  alt=""
+                  style={{ width: "16px", height: "16px", marginLeft: "6px" }}
+                />
+              </Link>
+
+              {/* Contact Us Button */}
+              <Link
+                href="/#contact"
+                scroll={true}
+                className="inline-flex px-6 py-2 rounded-full transition-all duration-200 items-center space-x-2 w-fit"
+                style={{ backgroundColor: "#00447D", color: "white" }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = "#60A5FA";
+                  const span = e.currentTarget.querySelector(
+                    "span"
+                  ) as HTMLElement;
+                  if (span) span.style.color = "#1e3a8a";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "#00447D";
+                  const span = e.currentTarget.querySelector(
+                    "span"
+                  ) as HTMLElement;
+                  if (span) span.style.color = "white";
+                }}
+                onMouseDown={(e) => {
+                  e.currentTarget.style.backgroundColor = "#93C5FD";
+                  const span = e.currentTarget.querySelector(
+                    "span"
+                  ) as HTMLElement;
+                  if (span) span.style.color = "#1e3a8a";
+                }}
+                onMouseUp={(e) => {
+                  e.currentTarget.style.backgroundColor = "#60A5FA";
+                  const span = e.currentTarget.querySelector(
+                    "span"
+                  ) as HTMLElement;
+                  if (span) span.style.color = "#1e3a8a";
+                }}
+              >
+                <span style={{ color: "white" }}>Contact Us</span>
+                <img
+                  src="/assets/images/arrow.png"
+                  alt=""
+                  style={{ width: "16px", height: "16px" }}
+                />
+              </Link>
+            </div>
           </div>
 
           {/* Right Column - Rotating Hero Images, should take 1/3 of the width */}
