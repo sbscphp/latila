@@ -76,8 +76,11 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center">
             <div className="flex items-center space-x-3">
-              <div
-                className="rounded-lg flex items-center justify-center bg-white"
+              <Link
+                href={navigationLinks[0].href}
+                scroll={true}
+                onClick={() => handleLinkClick(navigationLinks[0].section)}
+                className="rounded-lg flex items-center justify-center bg-white cursor-pointer"
                 style={{ width: "143px", height: "54px" }}
               >
                 <Image
@@ -86,7 +89,7 @@ const Header = () => {
                   width={143}
                   height={54}
                 />
-              </div>
+              </Link>
             </div>
           </div>
 
