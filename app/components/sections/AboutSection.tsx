@@ -2,10 +2,9 @@
 import Link from "next/link";
 import FadeInLeft from "../animations/FadeInLeft";
 import FadeInRight from "../animations/FadeInRight";
-
+import Image from "next/image";
 
 const AboutSection = () => {
-  
   return (
     <section
       className="py-16 lg:py-24 relative overflow-hidden"
@@ -24,10 +23,12 @@ const AboutSection = () => {
           <FadeInLeft delay={0.2}>
             <div className="flex justify-center lg:justify-start">
               <div className="rounded-2xl overflow-hidden">
-                <img
+                <Image
                   src="/assets/images/mission.png"
                   alt="Latila Consulting team collaboration"
                   className="w-full max-w-lg h-auto object-cover"
+                  width={500}
+                  height={500}
                 />
               </div>
             </div>
@@ -65,10 +66,12 @@ const AboutSection = () => {
                   }
                 >
                   <span>More About Us</span>
-                  <img
+                  <Image
                     src="/assets/images/arrow-up-right.png"
                     alt=""
-                    style={{ width: "16px", height: "16px", marginLeft: "7px" }}
+                    width={16}
+                    height={16}
+                    style={{ marginLeft: "7px" }}
                   />
                 </Link>
               </div>

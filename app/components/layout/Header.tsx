@@ -4,8 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { useFetchData } from "@/app/hooks/useApis";
-import Skeleton from "react-loading-skeleton";
+// import { useFetchData } from "@/app/hooks/useApis";
+import { logo as logoImage } from "@/public/assets/assets";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,7 +13,7 @@ const Header = () => {
   const [activeSection, setActiveSection] = useState("home");
   const pathname = usePathname();
 
-  const { data: logo, isPending } = useFetchData("logo-lights?populate=*");
+  // const { data: logo, isPending } = useFetchData("logo-lights?populate=*");
 
   useEffect(() => {
     setIsMounted(true);
@@ -22,7 +22,7 @@ const Header = () => {
   // Set active section based on pathname and hash
   useEffect(() => {
     if (!isMounted) return;
-    
+
     if (pathname === "/about") {
       setActiveSection("about");
       return;
@@ -53,7 +53,11 @@ const Header = () => {
     { href: "/", label: "Home", section: "home" },
     { href: "/#about", label: "About Us", section: "about" },
     { href: "/#services", label: "Services", section: "services" },
-    { href: "/#why-choose-us", label: "Why Choose Us", section: "why-choose-us" },
+    {
+      href: "/#why-choose-us",
+      label: "Why Choose Us",
+      section: "why-choose-us",
+    },
   ];
 
   const isLinkActive = (section: string) => {
@@ -76,18 +80,12 @@ const Header = () => {
                 className="rounded-lg flex items-center justify-center bg-white"
                 style={{ width: "143px", height: "54px" }}
               >
-                {!isMounted || isPending ? (
-                  <Skeleton height={54} width={143} />
-                ) : (
-                  logo?.data?.[0]?.href?.[0]?.url && (
-                    <Image
-                      src={logo?.data?.[0]?.href?.[0]?.url}
-                      alt={logo?.data?.[0]?.href?.[0]?.alt || "Latila Consulting Logo"}
-                      width={143}
-                      height={54}
-                    />
-                  )
-                )}
+                <Image
+                  src={logoImage}
+                  alt={"Latila Consulting Logo"}
+                  width={143}
+                  height={54}
+                />
               </div>
             </div>
           </div>

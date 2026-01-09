@@ -10,7 +10,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
 const ContactSection = () => {
-  const contactMutatation = usePostData("contacts");
+  // const contactMutatation = usePostData("contacts");
   const contactUsMutatation = usePostData("contact-us", true);
   const [formData, setFormData] = useState({
     name: "",
@@ -116,14 +116,14 @@ const ContactSection = () => {
 
     setIsSubmitting(true);
 
-    const payload = {
-      data: {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        message: formData.message,
-      },
-    };
+    // const payload = {
+    //   data: {
+    //     name: formData.name,
+    //     email: formData.email,
+    //     phone: formData.phone,
+    //     message: formData.message,
+    //   },
+    // };
 
     const contactUsPayload = {
       name: formData.name,
@@ -133,7 +133,7 @@ const ContactSection = () => {
     };
 
     try {
-      await contactMutatation.mutateAsync(payload);
+      // await contactMutatation.mutateAsync(payload);
       await contactUsMutatation.mutateAsync(contactUsPayload);
       // Reset form and errors on success
       setFormData({
