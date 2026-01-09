@@ -190,9 +190,12 @@ const ContactSection = () => {
 
   return (
     <section className="bg-white  pb-0" id="contact">
-      <div className="w-full">
-        <div className="p-8 lg:py-16" style={{ backgroundColor: "#E6F2FF" }}>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+      <div className="w-full ">
+        <div
+          className="p-8 lg:px-28 lg:py-16"
+          style={{ backgroundColor: "#E6F2FF" }}
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch max-w-7xl mx-auto">
             {/* Left Content - Image */}
             <FadeInLeft delay={0.2}>
               <div className="rounded-2xl overflow-hidden h-full">

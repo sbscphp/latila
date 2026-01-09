@@ -17,7 +17,9 @@ interface DigitalTransformationSectionProps {
   };
 }
 
-const DigitalTransformationSection = ({ aboutCards }: DigitalTransformationSectionProps) => {
+const DigitalTransformationSection = ({
+  aboutCards,
+}: DigitalTransformationSectionProps) => {
   const imageUrl = aboutCards?.data?.[0]?.image?.url || "/placeholder.png";
 
   return (
@@ -68,9 +70,9 @@ const DigitalTransformationSection = ({ aboutCards }: DigitalTransformationSecti
                     <Image
                       src={imageUrl}
                       alt={aboutCards?.data?.[0]?.name || "CEO"}
-                      fill
+                      width={400}
+                      height={400}
                       className="object-contain"
-                      sizes="(max-width: 800px) 100vw, 320px"
                       priority
                     />
                   </div>

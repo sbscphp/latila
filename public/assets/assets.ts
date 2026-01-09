@@ -6,6 +6,10 @@ import serviceThree from "./images/services6.png";
 import serviceFour from "./images/services4.png";
 import serviceFive from "./images/services5.png";
 
+import missionIcon from "./images/FRAME2.png";
+import visionIcon from "./images/FRAME4.png";
+
+import aboutImage from "./images/Aboutlogo.png";
 export {
   logo,
   diamondIcon,
@@ -14,4 +18,7 @@ export {
   serviceThree,
   serviceFour,
   serviceFive,
+  missionIcon,
+  visionIcon,
+  aboutImage,
 };
